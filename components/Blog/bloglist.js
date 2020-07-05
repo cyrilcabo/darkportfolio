@@ -102,7 +102,7 @@ const BlogList = (props) => {
 	});
 
 	return (
-		<Grid item xs={11} className={[classes.root, 1 ?classes.list :classes.errorContainer].join(' ')}>
+		<Grid item xs={11} className={[classes.root, blogs.length ?classes.list :classes.errorContainer].join(' ')}>
 			{blogs.length
 				?<React.Fragment>
 					<Grid item container alignItems="center">

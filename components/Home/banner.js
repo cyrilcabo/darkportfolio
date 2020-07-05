@@ -48,7 +48,7 @@ const useStyle = makeStyles(theme => ({
 	image: {
 		position: 'absolute',
 		zIndex: 1,
-		top: -40,
+		top: -30,
 		width: '80%',
 		height: '70%',
 		left: '15%',
@@ -70,8 +70,14 @@ const useStyle = makeStyles(theme => ({
 		color: '#371902',
 		fontSize: '6rem',
 		margin: 0,
+		fontStyle: 'italic',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '4rem',
+		}
+	},
+	imgMd: {
+		[theme.breakpoints.down('sm')]: {
+			height: 50,
 		}
 	},
 	subTitle: {
@@ -134,9 +140,12 @@ const Banner = (props) => {
 			</Link>
 		</Grid>
 	});
+
+	const links = ["https://facebook.com/cocaboarts", "https://instagram.com/co.cabo.arts"];
+
 	const socialIcons = ['Facebook', 'Instagram'].map((i, index) => {
 		return <Grid item key={index}>
-			<IconButton>
+			<IconButton onClick={() => window.open(links[index])}>
 				<img src={`/Utils/Social Icons/${i}.png`} />
 			</IconButton>
 		</Grid>
@@ -151,12 +160,19 @@ const Banner = (props) => {
 
 			<Grid item className={classes.details}>
 				<Grid item>
-					<h1 className={classes.title}> CO.CABO </h1>
-					<p className={classes.subTitle}> MD - ARTIST </p>
+					<Grid item container alignItems="center" justify="center">	
+						<Grid item>
+							<p className={classes.title}> co.cabo </p>
+						</Grid>
+						<Grid item>
+							<img src="/Utils/MD.png" className={classes.imgMd} />
+						</Grid>
+					</Grid>
+					<p className={classes.subTitle}> ARTIST </p>
 				</Grid>
 				<Grid item className={classes.message}>
-					<p> Hi welcome to my site! </p>
-					<p> Arts? That's my forte. </p>
+					<p> Hi welcome to my Art Site, </p>
+					<p> Check out my awesome works! </p>
 					<Divider style={{height: 5, width: '100%', backgroundColor: '#af5715'}} />
 				</Grid>
 				<Grid item container className={classes.navContainer}>

@@ -46,9 +46,13 @@ const useStyle = makeStyles(theme => ({
 	skillTitle: {
 		margin: 0,
 		fontSize: '3rem',
+		color: '#371902',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '2rem',
 		}
+	},
+	skillFancy: {
+		fontFamily: 'fancyFont',
 	},
 	skillDetails: {
 		margin: 0,
@@ -62,16 +66,16 @@ const useStyle = makeStyles(theme => ({
 const Expertise = (props) => {
 	const classes = useStyle();
 	const skills = [
-		{icon: <PencilIcon className={classes.icon} />, title: 'Portraits', details: 'Have your face drawn with ink on paper!'},
-		{icon: <PhoneIcon className={classes.icon} />, title: 'Digital Art', details: 'Give your traditional artworks a modern touch.'},
-		{icon: <BrushIcon className={classes.icon} />, title: 'Paintings', details: `Let's have your favorites colored on a canvas!`}
+		{icon: <PencilIcon className={classes.icon} />, title: 'Portraits', details: 'Get that awesome face on paper! (or other medium)'},
+		{icon: <PhoneIcon className={classes.icon} />, title: 'Commission', details: 'Need a special gift for someone? How special could a customized gift be?'},
+		{icon: <BrushIcon className={classes.icon} />, title: 'Paintings', details: `Check out my works, you might find something you could connect with!`}
 	].map((i, index) => {
 		return <Grid item xs={11} md={4} key={index} container direction="column" alignItems="center" spacing={1} className={classes.skillContainer}>
 			<Grid item>
 				{i.icon}
 			</Grid>
 			<Grid item>
-				<p className={classes.skillTitle}> {i.title} </p>
+				<p className={[classes.skillTitle, classes.skillFancy].join(' ')}> {i.title} </p>
 			</Grid>
 			<Grid item>
 				<p className={classes.skillDetails}> {i.details} </p>

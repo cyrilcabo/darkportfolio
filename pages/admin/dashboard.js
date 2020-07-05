@@ -29,7 +29,7 @@ const useStyle = makeStyles(theme => ({
 		position: 'relative',
 		'& > div.MuiGrid-item': {
 			marginBottom: 15,
-		}
+		},
 	},
 	design: {
 		position: 'absolute',
@@ -38,6 +38,13 @@ const useStyle = makeStyles(theme => ({
 		bottom: 0,
 		right: 0,
 		zIndex: -1,
+		marginBottom: -2,
+		[theme.breakpoints.down('sm')]: {
+			width: '70%',
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '100%',
+		}
 	},
 	header: {
 		backgroundColor: 'black',
@@ -104,6 +111,7 @@ const Dashboard = (props) => {
 	});
 	return (
 		<Grid item xs={12} container alignItems="center" direction="column" className={classes.root}>
+			<div style={{position: 'absolute', backgroundColor: '#f2f2f2', zIndex: -1, height: '100%', width: '100%'}} />
 			<Grid item container direction="column" alignItems="center" className={classes.header}>
 				<Grid item className={classes.titleHolder} container justify="center" direction="column" alignItems="center">
 					<Grid item>
@@ -131,7 +139,7 @@ const Dashboard = (props) => {
 			<RightBorderDesign className={classes.design} preserveAspectRatio="none"/>
 			<style jsx global> {`
 				body {
-					background-color: #f2f2f2;
+					background-color: #dbe4ef;
 					margin: 0;
 				}
 			`} </style>

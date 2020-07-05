@@ -173,7 +173,7 @@ const BlogPage = (props) => {
 				return blog;
 			}
 		}).map((item, index) => {
-			return <Grid item xs={12} md={4} container justify="center" style={{marginBottom: 15}}>
+			return <Grid item xs={12} md={4} container justify="center" style={{marginBottom: 15}} key={index}>
 				<Paper className={classes.moreBlog} elevation={0} onClick={() => Router.push(`/blog/view?id=${item.id}`)}>
 					<Grid item container direction="column" alignItems="center">
 						<Grid item>
@@ -390,7 +390,7 @@ const BlogPage = (props) => {
 	);
 }
 
-BlogPage.getInitialProps = async ({req, store, query}) => {
+BlogPage.getInitialProps = async ({req, store, query, res}) => {
 	const {id} = query;
 	const cookie = req ?{Cookie: req.headers.cookie} :null;
 	const blogPost = store.getState().blogs.find(blog => blog.id===id);
@@ -400,7 +400,18 @@ BlogPage.getInitialProps = async ({req, store, query}) => {
 			store.dispatch(viewBlog({...blogPost, liked: res.status}));
 		});
 	} else {
-		await apiViewBlog(id, cookie).then(res => store.dispatch(viewBlog(res.document)));
+		await apiViewBlog(id, cookie).then(response => {
+			if (response.document.title) {
+				store.dispatch(viewBlog(response.document));
+			} else {
+				if (req) {
+					res.writeHead(301, {Location: '/blog'});
+					res.end();
+				} else {
+					Router.replace('/blog');
+				}
+			}
+		});
 	}
 }
 

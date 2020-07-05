@@ -2,6 +2,9 @@ import App from 'next/app';
 
 import wrapper from '../redux/reducers/reducers';
 import {Provider} from 'react-redux';
+import Head from 'next/head';
+
+import '../public/css/index.css';
 
 import ScrollToTop from '../utils/scrolltotop';
 import {apiAuthenticate} from '../utils/api';
@@ -9,6 +12,9 @@ import {apiAuthenticate} from '../utils/api';
 const DarkArts = ({Component, pageProps, custom}) => {
 	return (
 		<ScrollToTop>
+			<Head>
+				<title> cocabo Arts </title>
+			</Head>
 			<Component {...pageProps} />
 		</ScrollToTop>
 	);

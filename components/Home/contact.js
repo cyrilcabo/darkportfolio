@@ -52,7 +52,7 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	title: {
-		fontSize: '4rem',
+		fontSize: '3.5rem',
 		margin: 0,
 		color: '#f1f1f1',
 		[theme.breakpoints.down('sm')]: {
@@ -159,8 +159,8 @@ const Contact = (props) => {
 	}
 
 	const contacts = [
-		{icon: <MessageIcon className={classes.icon} />, details: 'cyrilcabo@gmail.com'}, 
-		{icon: <CallIcon className={classes.icon} />, details: '+639398815697'}
+		{icon: <MessageIcon className={classes.icon} />, details: 'cocaboarts@gmail.com'}, 
+		{icon: <CallIcon className={classes.icon} />, details: '+639364417852'}
 	].map((item, index) => {
 		return <Grid item container justify="space-between" alignItems="center" key={index} className={classes.contactContainer}>
 			<Grid item> {item.icon} </Grid>

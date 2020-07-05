@@ -80,7 +80,7 @@ const useStyle = makeStyles(theme => ({
 	},
 	subTitle: {
 		margin: 0,
-		fontSize: '3rem',
+		fontSize: '2.5rem',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.5rem'
 		}
@@ -107,8 +107,8 @@ const BlogBanner = (props) => {
 			</Grid>
 			<Grid item xs={12} md={6} className={[classes.rightToCenter, classes.details].join(' ')}>
 				<Grid item className={classes.rightToCenter}>
-					<h1 className={classes.title}> Coffee break? </h1>
-					<p className={classes.subTitle}> Read my blog! </p>
+					<h1 className={classes.title}> Coffee break! </h1>
+					<p className={classes.subTitle}> Wanna get to know more of the artist? </p>
 				</Grid>
 				<Grid item className={classes.rightToCenter} container>
 					<Button variant="contained" className={classes.button} onClick={() => Router.push('/blog')}> Read more </Button>
