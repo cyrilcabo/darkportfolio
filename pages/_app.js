@@ -13,7 +13,8 @@ const DarkArts = ({Component, pageProps, custom}) => {
 	return (
 		<ScrollToTop>
 			<Head>
-				<title> cocabo Arts </title>
+				<title> cocaboarts </title>
+				<link href="/icons/favico.ico" rel="icon" />
 			</Head>
 			<Component {...pageProps} />
 		</ScrollToTop>
