@@ -6,7 +6,7 @@ import fetch from 'isomorphic-unfetch';
 // http://192.168.43.179:3000
 //local
 //http://localhost:3000
-const localDev = "http://localhost:3000";
+const localDev = "https://cocabo.herokuapp.com";
 
 const host = localDev;
 
