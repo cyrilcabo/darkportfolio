@@ -143,6 +143,10 @@ const uploadPicture = async (file, id, target) => {
 //-------------------------------------------------
 //Express+NextJS App
 nextApp.prepare().then(() => {
+  app.get('/.well-known/acme-challenge/XP26WXL0fT-pqlnnzjLXTB2wg3u5I22hiMvS1JoY8Xw', (req, res) => {
+    res.send('XP26WXL0fT-pqlnnzjLXTB2wg3u5I22hiMvS1JoY8Xw.cCSs_wJSFybKNIHbXRAHDh7gbURhdtrPqSPMawia2AY');
+  });
+  
   app.get('/api/admin/authenticateuser', (req, res) => {
     res.json({status: req.session.isLogged || !!req.session.user, msg: ""});
   });
