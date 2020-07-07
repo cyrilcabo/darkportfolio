@@ -22,6 +22,7 @@ const useStyle = makeStyles(theme => ({
 		color: '#371902',
 		margin: 0,
 		textAlign: 'center',
+		marginBottom: 40,
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '3rem',
 		}
@@ -32,9 +33,9 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	icon: {
-		width: 250,
+		width: 200,
 		[theme.breakpoints.down('sm')]: {
-			width: 180,
+			width: 150,
 		}
 	},
 	skillContainer: {
@@ -56,7 +57,7 @@ const useStyle = makeStyles(theme => ({
 	},
 	skillDetails: {
 		margin: 0,
-		fontSize: '1.6rem',
+		fontSize: '1.3rem',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.2rem',
 		}
@@ -70,7 +71,7 @@ const Expertise = (props) => {
 		{icon: <PhoneIcon className={classes.icon} />, title: 'Commission', details: 'Need a special gift for someone? How special could a customized gift be?'},
 		{icon: <BrushIcon className={classes.icon} />, title: 'Paintings', details: `Check out my works, you might find something you could connect with!`}
 	].map((i, index) => {
-		return <Grid item xs={11} md={4} key={index} container direction="column" alignItems="center" spacing={1} className={classes.skillContainer}>
+		return <Grid item xs={11} md={3} key={index} container direction="column" alignItems="center" spacing={1} className={classes.skillContainer}>
 			<Grid item>
 				{i.icon}
 			</Grid>
