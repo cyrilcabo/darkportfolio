@@ -89,6 +89,7 @@ const Works = (props) => {
 	const [works] = React.useState(props.works);
 	const [navs] = React.useState(new Array(Math.ceil(works.length/9)).fill(0).map((i, index) => index));
 	const [active, setActive] = React.useState(0);
+	const [imgSrcs, setImgSrcs] = React.useState([]);
 	const target = React.useRef(null);
 
 	const handleOpen = (id) => {
@@ -101,7 +102,14 @@ const Works = (props) => {
 			document.querySelector(`#${i.id}`).src = "";
 		});
 		works.slice(active*9, 9+(active*9)).forEach(async (i, index) => {
-			const a = await storageRef.child(`works/thumbs/${i.id}.jpg`).getDownloadURL();
+			let a;
+			const src = imgSrcs.find(img => img.id===i.id);
+			if (src) {
+				a = src.link;
+			} else {
+				a = await storageRef.child(`works/thumbs/${i.id}.jpg`).getDownloadURL();
+				setImgSrcs([...imgSrcs, {id: i.id, link: a}]);
+			}
 			document.querySelector(`#${i.id}`).src = a;
 		});
 	}, [active]);
