@@ -83,13 +83,14 @@ const useStyle = makeStyles(theme => ({
 	}
 }));
 
+let imgSrcs = [];
+
 const Works = (props) => {
 	const classes = useStyle();
 	const [open, setOpen] = React.useState(false);
 	const [works] = React.useState(props.works);
 	const [navs] = React.useState(new Array(Math.ceil(works.length/9)).fill(0).map((i, index) => index));
 	const [active, setActive] = React.useState(0);
-	const [imgSrcs, setImgSrcs] = React.useState([]);
 	const target = React.useRef(null);
 
 	const handleOpen = (id) => {
@@ -108,7 +109,7 @@ const Works = (props) => {
 				a = src.link;
 			} else {
 				a = await storageRef.child(`works/thumbs/${i.id}.jpg`).getDownloadURL();
-				setImgSrcs([...imgSrcs, {id: i.id, link: a}]);
+				imgSrcs = [...imgSrcs, {id: i.id, link: a}];
 			}
 			document.querySelector(`#${i.id}`).src = a;
 		});
