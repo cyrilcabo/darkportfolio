@@ -97,6 +97,9 @@ const Works = (props) => {
 	}
 
 	React.useEffect(() => {
+		works.slice(active*9, 9+(active*9)).forEach((i, index) => {
+			document.querySelector(`#${i.id}`).src = "";
+		});
 		works.slice(active*9, 9+(active*9)).forEach(async (i, index) => {
 			const a = await storageRef.child(`works/thumbs/${i.id}.jpg`).getDownloadURL();
 			document.querySelector(`#${i.id}`).src = a;
