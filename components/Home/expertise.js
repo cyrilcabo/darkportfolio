@@ -88,7 +88,7 @@ const Expertise = (props) => {
 	return (
 		<Grid item xs={12} container alignItems="center" direction="column" className={classes.root} id={"expertise"}>
 			<Grid item container justify="center">
-				<h3 className={classes.title}> EXPERTISE </h3>
+				<h3 className={classes.title}> Expertise </h3>
 			</Grid>
 			<Grid item container justify="space-around" className={classes.skillSection}>
 				{skills}
