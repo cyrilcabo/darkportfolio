@@ -25,17 +25,18 @@ const useStyle = makeStyles(theme => ({
 		position: 'relative',
 	},
 	footer: {
-		position: 'absolute',
+		position: 'relative',
 		bottom: 5,
 		width: '95%',
 		color: '#f1f1f1',
-		marginTop: 20,
+		marginTop: 60,
 		[theme.breakpoints.down('sm')]: {
 			'& > div.MuiGrid-item': {
 				width: '100%',
 				justifyContent: 'center',
 				marginBottom: 10,
 				textAlign: 'center',
+				marginTop: 50,
 			}
 		}
 	},
@@ -52,11 +53,11 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	title: {
-		fontSize: '3.5rem',
+		fontSize: '2rem',
 		margin: 0,
 		color: '#f1f1f1',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '3rem',
+			fontSize: '1.5rem',
 		}
 	},
 	divider: {
@@ -82,8 +83,8 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	icon: {
-		width: 40,
-		height: 40,
+		width: 30,
+		height: 30,
 		[theme.breakpoints.down('sm')]: {
 			width: 25,
 			height: 25
@@ -92,15 +93,10 @@ const useStyle = makeStyles(theme => ({
 	contactDetails: {
 		color: '#af5715',
 		margin: 0,
-		fontSize: '1.5rem',
+		fontSize: '1.2rem',
 		textAlign: 'right',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1rem',
-		}
-	},
-	message: {
-		[theme.breakpoints.down('sm')]: {
-			marginBottom: 100,
 		}
 	},
 	textBox: {
