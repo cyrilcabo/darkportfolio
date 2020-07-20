@@ -10,7 +10,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyle = makeStyles(theme => ({
 	root: {
-		minHeight: 600,
+		minHeight: 520,
 		marginTop: 30,
 		'& > div.MuiGrid-item': {
 			marginBottom: 0,
@@ -18,13 +18,14 @@ const useStyle = makeStyles(theme => ({
 		position: 'relative'
 	},
 	title: {
-		fontSize: '4rem',
+		fontSize: '3rem',
 		color: '#371902',
 		margin: 0,
 		textAlign: 'center',
-		marginBottom: 40,
+		marginBottom: 60,
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '3rem',
+			fontSize: '2.5rem',
+			marginBottom: 40,
 		}
 	},
 	skillSection: {
@@ -33,9 +34,9 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	icon: {
-		width: 200,
+		width: 170,
 		[theme.breakpoints.down('sm')]: {
-			width: 150,
+			width: 120,
 		}
 	},
 	skillContainer: {
@@ -46,21 +47,17 @@ const useStyle = makeStyles(theme => ({
 	},
 	skillTitle: {
 		margin: 0,
+		fontFamily: 'monospace',
+		fontWeight: 550,
 		fontSize: '3rem',
 		color: '#371902',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '2rem',
 		}
 	},
-	skillFancy: {
-		fontFamily: 'fancyFont',
-	},
 	skillDetails: {
 		margin: 0,
-		fontSize: '1.3rem',
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.2rem',
-		}
+		fontSize: '1.2rem',
 	}
 }));
 
@@ -76,7 +73,7 @@ const Expertise = (props) => {
 				{i.icon}
 			</Grid>
 			<Grid item>
-				<p className={[classes.skillTitle, classes.skillFancy].join(' ')}> {i.title} </p>
+				<p className={classes.skillTitle}> {i.title} </p>
 			</Grid>
 			<Grid item>
 				<p className={classes.skillDetails}> {i.details} </p>
