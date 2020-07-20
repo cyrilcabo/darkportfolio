@@ -16,33 +16,39 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyle = makeStyles(theme => ({
 	root: {
-		minHeight: 500,
+		minHeight: 420,
 		position: 'relative',
+		[theme.breakpoints.down('sm')]: {
+			height: 450,
+		}
 	},
 	bg: {
 		position: 'absolute',
 		height: '100%',
 		width: '100%',
-		backgroundImage: 'linear-gradient(to bottom right, #f1e2ba, #f1f1f1)',
+		backgroundImage: 'linear-gradient(to bottom right, #c2d4ea, #f1f1f1)',
 		zIndex: -2,
 	},
 	leftDesign: {
 		position: 'absolute',
 		height: '100%',
-		width: '50%',
+		width: '40%',
 		bottom: 0,
 		left: 0,
 		zIndex: -1,
 		[theme.breakpoints.down('sm')]: {
-			width: '80%',
-		},
-		[theme.breakpoints.down('xs')]: {
-			width: '100%',
+			display: 'none',
 		}
 	},
 	cup: {
 		'& > svg': {
-			height: 400,
+			height: 280,
+			'& > path.innercup': {
+				fill: "#2b2a29",	
+			},
+			[theme.breakpoints.down('sm')]: {
+				height: 150,	
+			}
 		},
 		display: 'flex',
 		justifyContent: 'center',
@@ -50,10 +56,6 @@ const useStyle = makeStyles(theme => ({
 		[theme.breakpoints.down('sm')]: {
 			justifyContent: 'center',
 			paddingRight: -20,
-			'& > svg': {
-				height: 250,
-				transform: 'rotate()'
-			},
 		}
 	},
 	rightToCenter: {
@@ -68,29 +70,32 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	details: {
-		justifyContent: 'space-around'
+		justifyContent: 'space-around',
+		[theme.breakpoints.down('sm')]: {
+			marginBottom: 80,	
+		}
 	},
 	title: {
 		margin: 0,
-		fontSize: '5rem',
+		fontSize: '3rem',
 		color: '#371903',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '3rem'
+			fontSize: '2rem'
 		}
 	},
 	subTitle: {
 		margin: 0,
-		fontSize: '2.5rem',
+		fontSize: '2rem',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.5rem'
+			fontSize: '1.3rem'
 		}
 	},
 	button: {
-		backgroundColor: '#e8d8a8',
-		color: '#af5715',
-		fontSize: '1.8rem',
+		backgroundColor: '#403e3c',
+		color: '#f1f1f1',
+		fontSize: '1.5rem',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.2rem',
+			fontSize: '1rem',
 			marginBottom: 10,
 		}
 	},
