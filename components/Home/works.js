@@ -53,10 +53,10 @@ const useStyle = makeStyles(theme => ({
 	},
 	title: {
 		margin: 0,
-		fontSize: '4rem',
+		fontSize: '3rem',
 		color: '#371902',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '3rem'
+			fontSize: '2.5rem'
 		}
 	},
 	workCards: {
@@ -166,7 +166,7 @@ const Works = (props) => {
 					style={{position: 'relative', minHeight: 646}}
 				>
 					<Grid item>
-						<h3 className={classes.title}> WORKS </h3>
+						<h3 className={classes.title}> Works </h3>
 					</Grid>
 					<Grid item container justify="center">
 						{activeWorks}
