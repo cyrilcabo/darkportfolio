@@ -4,8 +4,6 @@ import wrapper from '../redux/reducers/reducers';
 import {Provider} from 'react-redux';
 import Head from 'next/head';
 
-import '../public/css/index.css';
-
 import ScrollToTop from '../utils/scrolltotop';
 import {apiAuthenticate} from '../utils/api';
 
