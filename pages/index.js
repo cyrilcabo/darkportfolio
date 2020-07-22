@@ -35,6 +35,9 @@ const Index = (props) => {
 				<Contact />
 			</Grid>
 			<style jsx global>{`
+				html {
+					scroll-behavior: smooth;
+				}
 				body {
 					background-color: #f1f1f1f1;
 					margin: 0;
