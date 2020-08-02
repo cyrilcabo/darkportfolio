@@ -164,7 +164,7 @@ const Contact = (props) => {
 	].map((item, index) => {
 		return <Grid item container justify="space-between" alignItems="center" key={index} className={classes.contactContainer}>
 			<Grid item> {item.icon} </Grid>
-			<Grid> <a className={classes.contactDetails} href={`${item.details==='+639398815697' ?'tel' :'mailto'}:${item.details}`}> {item.details} </a> </Grid>
+			<Grid> <a className={classes.contactDetails} href={`${item.details==='+639364417852' ?'tel' :'mailto'}:${item.details}`}> {item.details} </a> </Grid>
 		</Grid>
 	});
 	const navRaw = props.isBlog
