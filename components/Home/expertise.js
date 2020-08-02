@@ -12,6 +12,7 @@ const useStyle = makeStyles(theme => ({
 	root: {
 		minHeight: 520,
 		marginTop: 30,
+		padding: '10px 0px',
 		'& > div.MuiGrid-item': {
 			marginBottom: 0,
 		},
@@ -47,13 +48,11 @@ const useStyle = makeStyles(theme => ({
 	},
 	skillTitle: {
 		margin: 0,
+		marginTop: 5,
 		fontFamily: 'monospace',
 		fontWeight: 550,
-		fontSize: '3rem',
+		fontSize: '2rem',
 		color: '#371902',
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '2rem',
-		}
 	},
 	skillDetails: {
 		margin: 0,
