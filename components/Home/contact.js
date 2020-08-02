@@ -93,8 +93,12 @@ const useStyle = makeStyles(theme => ({
 	contactDetails: {
 		color: '#af5715',
 		margin: 0,
+		textDecoration: 'none',
 		fontSize: '1.2rem',
 		textAlign: 'right',
+		'&:hover': {
+			color: 'white',
+		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1rem',
 		}
@@ -160,7 +164,7 @@ const Contact = (props) => {
 	].map((item, index) => {
 		return <Grid item container justify="space-between" alignItems="center" key={index} className={classes.contactContainer}>
 			<Grid item> {item.icon} </Grid>
-			<Grid> <p className={classes.contactDetails}> {item.details} </p> </Grid>
+			<Grid> <a className={classes.contactDetails} href={`${item.details==='+639398815697' ?'tel' :'mailto'}:${item.details}`}> {item.details} </a> </Grid>
 		</Grid>
 	});
 	const navRaw = props.isBlog
