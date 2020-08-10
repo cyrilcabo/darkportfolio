@@ -28,7 +28,7 @@ const firebaseAdmin = require('firebase-admin');
 
 const firebaseConfig = {
   credential: firebaseAdmin.credential.cert(JSON.parse(Buffer.from(process.env.FIREBASE_SECRET, "base64").toString("ascii"))),
-  apiKey: "AIzaSyDLvYpXoZTgAkkgiRb4KtNxmdr-c34fXx0",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "portfolio-4b1af.firebaseapp.com",
   databaseURL: "https://portfolio-4b1af.firebaseio.com",
   projectId: "portfolio-4b1af",
@@ -74,7 +74,7 @@ const sendmail = async (contact, content) => {
 app.set('PORT', process.env.PORT || 3000);
 app.use(session({
   name: 'portfolio',
-  secret: 'darksecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: { 
