@@ -105,7 +105,7 @@ const useStyle = makeStyles(theme => ({
 const BlogBanner = (props) => {
 	const classes = useStyle();
 	return (
-		<Grid item xs={12} container justify="space-around" className={classes.root}>
+		<Grid item xs={12} container justify="center" className={classes.root}>
 			<div className={classes.bg} />
 			<BlogLeftDesign className={classes.leftDesign} preserveAspectRatio={"none"} />
 			<Grid item xs={11} md={10} justify="space-around" container">
