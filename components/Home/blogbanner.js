@@ -108,7 +108,7 @@ const BlogBanner = (props) => {
 		<Grid item xs={12} container justify="center" className={classes.root}>
 			<div className={classes.bg} />
 			<BlogLeftDesign className={classes.leftDesign} preserveAspectRatio={"none"} />
-			<Grid item xs={11} md={10} justify="space-around" container">
+			<Grid item xs={11} md={10} justify="space-around" container>
 				<Grid item xs={12} md={5} className={classes.cup} >
 					<CoffeeCup preserveAspectRatio={"none"}/>
 				</Grid>
