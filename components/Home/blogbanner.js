@@ -85,7 +85,7 @@ const useStyle = makeStyles(theme => ({
 	},
 	subTitle: {
 		margin: 0,
-		fontSize: '2rem',
+		fontSize: '1.5rem',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.3rem'
 		}
