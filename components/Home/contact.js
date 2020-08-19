@@ -21,7 +21,7 @@ const useStyle = makeStyles(theme => ({
 	root: {
 		minHeight: 500,
 		backgroundColor: 'black',
-		paddingTop: 20,
+		paddingTop: 50,
 		position: 'relative',
 	},
 	footer: {
@@ -30,13 +30,14 @@ const useStyle = makeStyles(theme => ({
 		width: '95%',
 		color: '#f1f1f1',
 		marginTop: 60,
+		marginBottom: 30,
 		[theme.breakpoints.down('sm')]: {
 			'& > div.MuiGrid-item': {
 				width: '100%',
 				justifyContent: 'center',
-				marginBottom: 10,
+				marginBottom: 20,
 				textAlign: 'center',
-				marginTop: 50,
+				marginTop: 0,
 			}
 		}
 	},
