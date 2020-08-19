@@ -53,10 +53,13 @@ const useStyle = makeStyles(theme => ({
 	},
 	title: {
 		margin: 0,
+		marginBottom: 15,
+		fontFamily: 'cursive',
 		fontSize: '3rem',
 		color: '#371902',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '2.5rem'
+			fontSize: '2.5rem',
+			marginBottom: 30,
 		}
 	},
 	workCards: {
