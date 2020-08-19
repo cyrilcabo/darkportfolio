@@ -174,7 +174,7 @@ const Works = (props) => {
 					<Grid item container justify="center">
 						{activeWorks}
 					</Grid>
-					<Grid item style={{position: 'relative', bottom: 10, marginTop: 50}} container justify="center">
+					<Grid item style={{position: 'relative', bottom: 10, margin: "50px 0px 25px 0px"}} container justify="center">
 						{navItems}
 					</Grid>
 				</Grid>
