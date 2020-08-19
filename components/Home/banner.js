@@ -35,14 +35,21 @@ const useStyle = makeStyles(theme => ({
 	container: {
 		width: '35%',
 		height: 500,
+		maxWidth: 500,
 		position: 'relative',
+		[theme.breakpoints.down('md')]: {
+			maxWidth: 450,
+		},
 		[theme.breakpoints.down('sm')]: {
 			width: '50%',
 			height: 350,
+			maxWidth: 300,
 		},
 		[theme.breakpoints.down('xs')]: {
 			marginTop: 30,
-			width: '90%',
+			width: '80%',
+			maxWidth: 250,
+			height: 300,
 		}
 	},
 	image: {
@@ -82,10 +89,11 @@ const useStyle = makeStyles(theme => ({
 	},
 	subTitle: {
 		margin: 0,
-		fontSize: '2.5rem',
+		fontFamily: 'cursive',
+		fontSize: '2rem',
 		fontWeight: 550,
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '2rem',
+			fontSize: '1.5rem',
 		}
 
 	},
@@ -108,7 +116,7 @@ const useStyle = makeStyles(theme => ({
 	nav: {
 		margin: 0,
 		marginLeft: 30,
-		fontSize: '2rem',
+		fontSize: '1.5rem',
 		cursor: 'pointer',
 		'&:hover': {
 			color: '#b05919'
