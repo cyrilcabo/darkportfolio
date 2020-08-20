@@ -54,7 +54,7 @@ const useStyle = makeStyles(theme => ({
 	title: {
 		margin: 0,
 		marginBottom: 15,
-		fontFamily: 'cursive',
+		fontFamily: 'fancy',
 		fontSize: '3rem',
 		color: '#371902',
 		[theme.breakpoints.down('sm')]: {
