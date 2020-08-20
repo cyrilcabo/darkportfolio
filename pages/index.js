@@ -38,6 +38,10 @@ const Index = (props) => {
 				html {
 					scroll-behavior: smooth;
 				}
+				@font-face {
+					font-family: cursive;
+					src: url(/fonts/courgette.ttf);
+				}
 				body {
 					background-color: #f1f1f1f1;
 					margin: 0;
