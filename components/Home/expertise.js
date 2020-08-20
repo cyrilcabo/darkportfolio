@@ -36,13 +36,19 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	icon: {
-		width: 170,
+		width: 140,
 		[theme.breakpoints.down('sm')]: {
 			width: 120,
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: 100,
 		}
 	},
 	skillContainer: {
 		textAlign: 'center',
+		[theme.breakpoints.up('sm')]: {
+			padding: "0px 20px",
+		},
 		[theme.breakpoints.down('sm')]: {
 			marginBottom: 50,
 		}
@@ -74,7 +80,7 @@ const Expertise = (props) => {
 		{icon: <PhoneIcon className={classes.icon} />, title: 'Commission', details: 'Need a special gift for someone? How special could a customized gift be?'},
 		{icon: <BrushIcon className={classes.icon} />, title: 'Paintings', details: `Check out my works, you might find something you could connect with!`}
 	].map((i, index) => {
-		return <Grid item xs={11} md={3} key={index} container direction="column" alignItems="center" spacing={1} className={classes.skillContainer}>
+		return <Grid item xs={11} sm={6} md={3} key={index} container direction="column" alignItems="center" spacing={1} className={classes.skillContainer}>
 			<Grid item>
 				{i.icon}
 			</Grid>
@@ -96,7 +102,7 @@ const Expertise = (props) => {
 			<Grid item container justify="center">
 				<h3 className={classes.title}> Expertise </h3>
 			</Grid>
-			<Grid item container justify="space-around" className={classes.skillSection}>
+			<Grid item xs={11} md={10} container justify="space-around" className={classes.skillSection}>
 				{skills}
 			</Grid>
 			<Grid item container direction="column" style={{position: 'absolute', bottom: 0}}>
