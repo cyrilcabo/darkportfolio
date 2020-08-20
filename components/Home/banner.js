@@ -89,7 +89,7 @@ const useStyle = makeStyles(theme => ({
 	},
 	subTitle: {
 		margin: 0,
-		fontFamily: 'cursive',
+		fontFamily: 'fancy',
 		fontSize: '2rem',
 		fontWeight: 550,
 		[theme.breakpoints.down('sm')]: {
