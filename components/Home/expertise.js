@@ -58,6 +58,12 @@ const useStyle = makeStyles(theme => ({
 	skillDetails: {
 		margin: 0,
 		fontSize: '1.2rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.1rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1rem',
+		}
 	}
 }));
 
