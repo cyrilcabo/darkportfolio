@@ -78,7 +78,7 @@ const useStyle = makeStyles(theme => ({
 	title: {
 		margin: 0,
 		fontSize: '3rem',
-		fontFamily: 'cursive',
+		fontFamily: 'fancy',
 		color: '#371903',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '2rem'
