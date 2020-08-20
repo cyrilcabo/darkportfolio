@@ -94,7 +94,7 @@ const useStyle = makeStyles(theme => ({
 		fontWeight: 550,
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.5rem',
-		}
+		},
 
 	},
 	message: {
@@ -104,7 +104,13 @@ const useStyle = makeStyles(theme => ({
 			color: '#b05919',
 			[theme.breakpoints.down('sm')]: {
 				fontSize: '1.5rem'
-			}
+			},
+			[theme.breakpoints.down('xs')]: {
+				fontSize: '1.25rem',
+			},
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '95%',
 		}
 	},
 	navContainer: {
