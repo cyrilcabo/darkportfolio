@@ -39,7 +39,7 @@ const Index = (props) => {
 					scroll-behavior: smooth;
 				}
 				@font-face {
-					font-family: cursive;
+					font-family: fancy;
 					src: url(/fonts/courgette.ttf);
 				}
 				body {
