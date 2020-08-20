@@ -65,11 +65,8 @@ const useStyle = makeStyles(theme => ({
 		margin: 0,
 		fontSize: '1.2rem',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.1rem',
-		},
-		[theme.breakpoints.down('xs')]: {
 			fontSize: '1rem',
-		}
+		},
 	}
 }));
 
@@ -102,7 +99,7 @@ const Expertise = (props) => {
 			<Grid item container justify="center">
 				<h3 className={classes.title}> Expertise </h3>
 			</Grid>
-			<Grid item xs={11} md={10} container justify="space-around" className={classes.skillSection}>
+			<Grid item xs={11} md={12} lg={10} container justify="space-around" className={classes.skillSection}>
 				{skills}
 			</Grid>
 			<Grid item container direction="column" style={{position: 'absolute', bottom: 0}}>
