@@ -20,7 +20,7 @@ const useStyle = makeStyles(theme => ({
 	},
 	title: {
 		fontSize: '3rem',
-		fontFamily: 'cursive',
+		fontFamily: 'fancy',
 		color: '#371902',
 		margin: 0,
 		textAlign: 'center',
@@ -50,7 +50,7 @@ const useStyle = makeStyles(theme => ({
 	skillTitle: {
 		margin: 0,
 		marginTop: 5,
-		fontFamily: 'cursive',
+		fontFamily: 'fancy',
 		fontWeight: 550,
 		fontSize: '2rem',
 		color: '#371902',
