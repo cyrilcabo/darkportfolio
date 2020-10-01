@@ -240,6 +240,16 @@ nextApp.prepare().then(() => {
     }
   });
 
+  app.get('/api/getfeatured', async (req, res) => {
+    const featuredRef = db.collection('works').orderBy("featured", "asc");
+    const snapshot = await featuredRef.limit(5).get();
+    let results = [];
+    snapshot.forEach((work) => {
+      results.push({...work.data(), id: work.id});
+    });
+    res.json({status: true, msg: '', results, length: results.length});
+  });
+
   app.get('/api/getworks', async (req, res) => {
     const worksRef = db.collection('works').orderBy(firebaseAdmin.firestore.FieldPath.documentId());
     const snapshot = await worksRef.get();

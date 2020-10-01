@@ -36,6 +36,10 @@ export const apiFetchWorks = async () => {
 	return await fetch(`${host}/api/getworks`).then(res => res.json());
 }
 
+export const apiFetchFeatured = async () => {
+	return await fetch(`${host}/api/getfeatured`).then(res => res.json());
+}
+
 //Handle blogs
 export const apiAddBlog = async (data) => {
 	return await fetch(`${host}/api/admin/addblog`, {

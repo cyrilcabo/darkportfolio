@@ -2,7 +2,7 @@
 import Grid from '@material-ui/core/Grid';
 
 //SVG Icons
-import {HeartIcon, CommentIcon} from '../../public/Utils/svg';
+import {HeartIcon, CommentIcon} from '../../src/svg';
 
 //Utils
 import moment from 'moment';
@@ -10,49 +10,72 @@ import moment from 'moment';
 //Styles
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
+	innerContainer: {
+		alignItems: 'center',
+	},
 	title: {
 		color: '#af5715',
-		fontSize: '2rem',
-		margin: 0,
-	},
-	date: {
-		fontSize: '1.5rem',
-		margin: 0,
-	},
-	author: {
-		fontSize: '1.5rem',
-		margin: 0,
+		fontSize: '1.8rem',
+		fontFamily: 'fancy',
+		textAlign: 'center',
+		margin: "0px 0px 2px 0px",
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.5rem',
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.3rem',
+		}
 	},
 	trunc: {
-		fontSize: '1.2rem',
+		fontSize: '0.9rem',
+		fontFamily: 'sans-serif',
+		color: '#313131',
 		margin: 0,
+		overflowWrap: 'anywhere',
+		textAlign: 'center',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '0.87rem',
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.84rem'
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '0.8rem'
+		}
 	},
-	heart: {
-		height: 25,
-		width: 25,
-		margin: 10,
+	iconHolder: {
+		display: 'flex', 
+		alignItems: 'center',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '0.95rem',
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '0.9rem'
+		},
+		'& svg': {
+			height: 25,
+			width: 25,
+			margin: 10,
+			[theme.breakpoints.down('md')]: {
+				height: 20,
+				width: 20,
+			},
+			[theme.breakpoints.down('sm')]: {
+				height: 15,
+				width: 15,
+			}
+		}
 	},
-	comment: {
-		height: 25,
-		width: 25,
-		margin: 10,
-	}
-});
+}));
 
 const CardContent = (props) => {
 	const classes = useStyle();
 	return (
 		<Grid item xs={12} container justify="space-between" direction="column">
-			<Grid item container direction="column">
+			<Grid item container direction="column" className={classes.innerContainer}>
 				<Grid item>
 					<h3 className={classes.title}> {props.title} </h3>
-				</Grid>
-				<Grid item>
-					<p className={classes.date}> {moment(props.datePosted).format("MMMM DD, YYYY")} </p>
-				</Grid>
-				<Grid item>
-					<h4 className={classes.author}> {props.author} </h4>
 				</Grid>
 				<Grid item>
 					<p className={classes.trunc}>
@@ -61,11 +84,11 @@ const CardContent = (props) => {
 				</Grid>
 			</Grid>
 			<Grid item container justify="space-around">
-				<Grid item style={{display: 'flex', alignItems: 'center'}}>
-					{props.likes} <HeartIcon className={classes.heart} />
+				<Grid item className={classes.iconHolder}>
+					{props.likes} <HeartIcon />
 				</Grid>
-				<Grid item style={{display: 'flex', alignItems: 'center'}}>
-					{props.comments} <CommentIcon className={classes.comment} />
+				<Grid item className={classes.iconHolder}>
+					{props.comments} <CommentIcon />
 				</Grid>
 			</Grid>
 		</Grid>

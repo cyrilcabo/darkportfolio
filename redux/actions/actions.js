@@ -56,6 +56,13 @@ export function fetchWorks (works) {
 	}
 }
 
+export function fetchFeatured (works) {
+	return {
+		type: "FETCH_FEATURED",
+		payload: works,
+	}
+}
+
 export function viewWork (work) {
 	return {
 		type: "VIEW_WORK",

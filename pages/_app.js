@@ -7,6 +7,8 @@ import Head from 'next/head';
 import ScrollToTop from '../utils/scrolltotop';
 import {apiAuthenticate} from '../utils/api';
 
+import '../src/styles/css/index.css';
+
 const DarkArts = ({Component, pageProps, custom}) => {
 	return (
 		<ScrollToTop>

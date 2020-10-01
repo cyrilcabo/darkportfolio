@@ -18,7 +18,7 @@ import Works from '../../components/Dashboard/works';
 import AddBlog from '../../components/Dashboard/addblog';
 
 //SVG images
-import {RightBorderDesign} from '../../public/Utils/svg';
+import {RightBorderDesign} from '../../src/svg';
 
 //Styles
 import makeStyles from '@material-ui/core/styles/makeStyles';

@@ -1,0 +1,11 @@
+html {
+	scroll-behavior: smooth;
+}
+@font-face {
+	font-family: fancy;
+	src: url(../fonts/courgette.ttf);
+}
+body {
+	background-color: #fcfcfc;
+	margin: 0;
+}

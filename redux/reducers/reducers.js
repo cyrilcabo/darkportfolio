@@ -22,7 +22,13 @@ const blogsReducer = (state=store.blogs, action) => {
 			});
 		case "ADD_COMMENT":
 			return state.map(item => {
-				if (item.id===action.payload.id) item.comments += 1;
+				if (item.id===action.payload.id) {
+					item.comments += 1;
+					item.commentArray = [
+						...action.payload.comments,
+						...item.commentArray,
+					];
+				}
 				return item;
 			})
 
@@ -62,6 +68,14 @@ const worksReducer = (state=store.works, action) => {
 	}
 }
 
+const featuredReducer = (state=store.featured, action) => {
+	switch (action.type) {
+		case "FETCH_FEATURED":
+			return action.payload;
+		default: return state;
+	}
+}
+
 const currentWorkReducer = (state=store.currentWork, action) => {
 	switch (action.type) {
 		case "VIEW_WORK":
@@ -75,6 +89,7 @@ const combinedReducers = combineReducers({
 	currentBlog: currentBlogReducer,
 	works: worksReducer,
 	currentWork: currentWorkReducer,
+	featured: featuredReducer
 });
 
 const reducers = (state, action) => {

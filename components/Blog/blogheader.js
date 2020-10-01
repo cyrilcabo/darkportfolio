@@ -2,7 +2,7 @@
 import Grid from '@material-ui/core/Grid';
 
 //SVG images
-import {CoffeeCup} from '../../public/Utils/svg';
+import {CoffeeCup} from '../../src/svg';
 
 //Utils
 import Link from 'next/link';
@@ -18,6 +18,15 @@ const useStyle = makeStyles(theme => ({
 		'& > div.MuiGrid-item': {
 			margin: '0px 10px 0px 10px',
 		},
+		[theme.breakpoints.down('md')]: {
+			minHeight: 340,
+		},
+		[theme.breakpoints.down('sm')]: {
+			minHeight: 270,
+		},
+		[theme.breakpoints.down('xs')]: {
+			minHeight: 280,
+		}
 	},
 	coffeecup: {
 		height: '70%',
@@ -35,6 +44,15 @@ const useStyle = makeStyles(theme => ({
 		[theme.breakpoints.down('xs')]: {
 			width: 120,
 			height: 120,
+			marginTop: 30,
+		}
+	},
+	designContainer: {
+		[theme.breakpoints.down('xs')]: {
+			width: '100%',
+			flexBasis: '100%',
+			display: 'flex',
+			justifyContent: 'center'
 		}
 	},
 	titleholder: {
@@ -46,27 +64,41 @@ const useStyle = makeStyles(theme => ({
 		textAlign: 'center',
 		[theme.breakpoints.down('sm')]: {
 			minHeight: 139,
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '100%',
+			flexBasis: '100%',
 		}
 	},
 	title: {
 		margin: 0,
 		fontSize: '4rem',
+		fontFamily: 'fancy',
 		color: '#3e2a05',
+		[theme.breakpoints.down('md')]: {
+			fontFamily: '3.5rem',
+		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '2.5rem',
 		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '2rem',
+			fontSize: '1.8rem',
+			marginTop: 10,
 		}
 	},
 	subTitle: {
 		margin: 0,
-		fontSize: '2rem',
+		fontSize: '1.5rem',
+		fontFamily: 'sans-serif',
+		fontWeight: 550,
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.35rem'
+		},
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.8rem',
+			fontSize: '1.2rem',
 		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '1.4rem',
+			fontSize: '1rem',
 		}
 	},
 	navContainer: {
@@ -76,35 +108,39 @@ const useStyle = makeStyles(theme => ({
 		justifyContent: 'center',
 		[theme.breakpoints.down('sm')]: {
 			marginTop: 25,
+			marginBottom: 15,
 		}
 	},
 	nav: {
 		margin: 0,
-		fontSize: '1.5rem',
+		fontSize: '1.2rem',
 		color: '#b29968',
 		cursor: 'pointer',
 		'&:hover': {
 			color: 'black',
 		},
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.2rem',
+			fontSize: '1.1rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1rem',
 		}
 	}
 }));
 
 const BannerHeader = (props) => {
 	const classes = useStyle();
-	const navs = ['Home', 'Blog'].map((item, index) => {
+	const navs = [{name: 'Home', link: '/'}, {name: 'Works', link: '/works'}, {name: 'Blog', link: '/blog'}].map((item, index) => {
 		return <Grid item key={index} style={{margin: '0px 10px 0px 10px'}}>
-			<Link href={item==='Home' ?'/' :'/blog'}>
-				<p className={classes.nav}> {item} </p>
+			<Link href={item.link}>
+				<p className={classes.nav}> {item.name} </p>
 			</Link>
 		</Grid>;
 	});
 	return (
 		<Grid item xs={12} container justify="center" alignItems="center" className={classes.root}>
 			<div style={{position: 'absolute', zIndex: 1, height: 15, width: '100%', backgroundColor: 'black', top: 0}} />
-			<Grid item>
+			<Grid item className={classes.designContainer}>
 				<Grid item container justify="center" alignItems="center" className={classes.coffeeholder}>
 					<CoffeeCup className={classes.coffeecup} preserveAspectRatio="none"/>
 				</Grid>

@@ -4,11 +4,10 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Custom components
-import AdvancedCard from '../Card/advancedcard';
 import SimpleCard from '../Card/simplecard';
 
 //SVG images
-import {Canvas404} from '../../public/Utils/svg';
+import {Canvas404} from '../../src/svg';
 
 //Util
 import React from 'react';
@@ -32,7 +31,10 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	card: {
-		marginBottom: 15,
+		marginBottom: 50,
+		[theme.breakpoints.down('sm')]: {
+			marginBottom: 30,
+		}
 	},
 	errorContainer: {
 		flexDirection: 'column',
@@ -42,6 +44,12 @@ const useStyle = makeStyles(theme => ({
 	list: {
 		flexDirection: 'column',
 		minHeight: 900,
+	},
+	cardsContainer: {
+		'&::after': {
+			content: "''",
+			flexGrow: 1,
+		},
 	},
 	messageLogo: {
 		height: 400,
@@ -59,7 +67,7 @@ const useStyle = makeStyles(theme => ({
 	},
 	divider: {
 		height: 5,
-		backgroundColor: '#f4d288'
+		backgroundColor: '#313131'
 	},
 	nav: {
 		margin: '0px 10px 0px 10px',
@@ -87,7 +95,7 @@ const BlogList = (props) => {
 	}
 
 	const cards = blogs.map((item, index) => {
-		return <Grid item xs={11} md={5} lg={4} key={index} className={classes.card} container justify="center">
+		return <Grid item xs={12} sm={6} md={4} key={index} className={classes.card} container justify="center">
 			<SimpleCard 
 				title={item.title}
 				author={item.author}
@@ -108,11 +116,11 @@ const BlogList = (props) => {
 					<Grid item container alignItems="center">
 						<Grid item xs={3} sm={4} md={5} className={classes.divider} />
 						<Grid item xs={6} sm={4} md={2} container justify="center" style={{textAlign: 'center'}}>
-							<p style={{margin: 0}}> Dark Arts </p>
+							<p style={{margin: 0, fontFamily: 'fancy'}}> Dark Arts </p>
 						</Grid>
 						<Grid item xs={3} sm={4}md={5}  className={classes.divider} />
 					</Grid>		
-					<Grid item container justify={"space-around"}>
+					<Grid item container justify={"space-between"} className={classes.cardsContainer}>
 						{cards}
 					</Grid>
 					<Grid item container style={{marginTop: 'auto', textAlign: 'center',}} justify="center" alignItems="center">

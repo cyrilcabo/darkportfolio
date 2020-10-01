@@ -2,6 +2,7 @@ const store = {
 	blogs: [],
 	currentBlog: {},
 	works: [],
+	featured: [],
 	currentWork: {},
 }
 

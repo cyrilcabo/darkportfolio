@@ -1,63 +1,40 @@
+//Material components
 import Grid from '@material-ui/core/Grid';
 
 //Custom components
-import Banner from '../components/Home/banner';
-import Works from '../components/Home/works';
-import Expertise from '../components/Home/expertise';
-import Contact from '../components/Home/contact';
-import ViewWork from '../components/Home/viewwork';
-import BlogBanner from '../components/Home/blogbanner';
+import Banner from '../components/Index/banner';
+import FeaturedWorks from '../components/Index/featuredworks';
+import Services from '../components/Index/services';
+import Talk from '../components/Index/talk';
+import Footer from '../components/Index/footer';
+import ExtraInfo from '../components/Index/extrainfo';
+
+//Api utils
+import {apiFetchFeatured} from '../utils/api';
+import {fetchFeatured} from '../redux/actions/actions';
 
 //Utils
-import {apiFetchWorks} from '../utils/api';
-import {fetchWorks, viewWork} from '../redux/actions/actions';
-
 import {connect} from 'react-redux';
+import Router from 'next/router';
 
-//Styles
-import makeStyles from '@material-ui/core/styles/makeStyles';
-
-const useStyle = makeStyles(theme => ({
-	root: {
-		position: 'relative',
-	},
-}));
-
-const Index = (props) => {
-	const classes = useStyle();
+const Home = (props) => {
 	return (
-		<Grid item xs={12} container className={classes.root}>
-			<Grid item xs={12}>
-				<Banner />
-				<Works works={props.works} currentWork={props.currentWork} viewWork={props.viewWork}/>
-				<Expertise />
-				<BlogBanner />
-				<Contact />
-			</Grid>
-			<style jsx global>{`
-				html {
-					scroll-behavior: smooth;
-				}
-				@font-face {
-					font-family: fancy;
-					src: url(/fonts/courgette.ttf);
-				}
-				body {
-					background-color: #f1f1f1f1;
-					margin: 0;
-				}
-			`}</style>
+		<Grid item xs={12} container>
+			<Banner 
+				title={"co.cabo"}
+				subTitle={"Not just an artist. A pretty good one."}
+			/>
+			<FeaturedWorks featured={props.featured} />
+			<Services />
+			<Talk />
+			<ExtraInfo onClick={() => Router.push('/blog')} btnName={"Read more"} title={"Coffee break? Read my blogs!"} />
+			<Footer />
 		</Grid>
 	);
 }
 
-Index.getInitialProps = async ({store}) => {
-	if (!store.getState().works.length)
-		await apiFetchWorks().then(res => store.dispatch(fetchWorks(res.results)));
+Home.getInitialProps = async ({store, req}) => {
+	if (store && !store.getState().featured.length) await apiFetchFeatured().then((res) => store.dispatch(fetchFeatured(res.results)));
 }
 
-const mapDispatchToProps = {
-	viewWork,
-}
-
-export default connect(state => ({works: state.works, currentWork: state.currentWork}), mapDispatchToProps)(Index);
+export default connect(state => ({featured: state.featured}))(Home);

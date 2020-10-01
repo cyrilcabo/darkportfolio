@@ -3,10 +3,7 @@ import Grid from '@material-ui/core/Grid';
 
 //Custom Components
 import BlogHeader from './blogheader';
-import Contact from '../Home/contact';
-
-//SVG images
-import {BlogLeftDesign} from '../../public/Utils/svg';
+import Footer from '../Index/footer';
 
 //Styles
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -27,7 +24,7 @@ const BlogContainer = (props) => {
 					{props.children}
 				</Grid>
 			</Grid>
-			<Contact isBlog />
+			<Footer />
 			<style jsx global> {`
 				body {
 					background-color: white;
