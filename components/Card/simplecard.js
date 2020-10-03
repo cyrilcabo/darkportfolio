@@ -80,8 +80,6 @@ const SimpleCard = (props) => {
 						<CardContent 
 							title={props.title}
 							excerpt={props.excerpt}
-							author={props.author}
-							datePosted={props.datePosted}
 							likes={props.likes}
 							comments={props.comments}
 						/>

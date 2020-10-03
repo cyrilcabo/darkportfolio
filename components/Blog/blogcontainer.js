@@ -5,21 +5,11 @@ import Grid from '@material-ui/core/Grid';
 import BlogHeader from './blogheader';
 import Footer from '../Index/footer';
 
-//Styles
-import makeStyles from '@material-ui/core/styles/makeStyles';
-
-const useStyle = makeStyles(theme => ({
-	children: {
-		minHeight: 800,
-	}
-}));
-
 const BlogContainer = (props) => {
-	const classes = useStyle();
 	return (
 		<Grid item container xs={12}>
 			<BlogHeader />
-			<Grid item xs={12} className={classes.children}>
+			<Grid item xs={12}>
 				<Grid item container justify="center">
 					{props.children}
 				</Grid>

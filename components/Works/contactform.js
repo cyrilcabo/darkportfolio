@@ -80,7 +80,7 @@ const ContactForm = (props) => {
 					<a href={"tel:+639364417852"}> +639364417852 </a>
 				</Grid>
 				<Grid item>
-					<a href={"cocaboarts@gmail.com"}> cocaboarts@gmail.com </a>
+					<a href={"mailto:cocaboarts@gmail.com"}> cocaboarts@gmail.com </a>
 				</Grid>
 			</Grid>
 		</Paper>

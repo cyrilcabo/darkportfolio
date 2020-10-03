@@ -28,7 +28,17 @@ const useStyle = makeStyles(theme => ({
 		'& > div.MuiGrid-item': {
 			marginBottom: 15,
 		},
-		margin: '20px 0px 20px 0px'
+		margin: '20px 0px 20px 0px',
+		minHeight: 900,
+		[theme.breakpoints.down('md')]: {
+			minHeight: 850,
+		},
+		[theme.breakpoints.down('sm')]: {
+			minHeight: 800,
+		},
+		[theme.breakpoints.down('xs')]: {
+			minHeight: 750
+		}
 	},
 	titleContainer: {
 		backgroundColor: '#191919',
@@ -105,22 +115,22 @@ const useStyle = makeStyles(theme => ({
 	content: {
 		marginTop: 10,
 		textAlign: 'justify',
-		fontSize: '1.2rem',
+		fontSize: '1.3rem',
 		width: '100%',
-		lineHeight: '1.5',
+		lineHeight: '2',
 		whiteSpace: 'pre-wrap',
 		minHeight: 400,
 		[theme.breakpoints.down('md')]: {
-			fontSize: '1.1rem',
-			lineHeight: '1.4'
+			fontSize: '1.15rem',
+			lineHeight: '1.7'
 		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1rem',
-			lineHeight: '1.3',
+			lineHeight: '1.4',
 		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '0.95rem',
-			lineHeight: '1.2'
+			fontSize: '0.97rem',
+			lineHeight: '1.5'
 		}
 	},
 	toMore: {

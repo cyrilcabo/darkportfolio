@@ -23,12 +23,15 @@ const useStyle = makeStyles(theme => ({
 		display: 'flex',
 		padding: '20px 0px 20px 0px',
 		minHeight: 800,
+		[theme.breakpoints.down('md')]: {
+			minHeight: 750,
+		},
+		[theme.breakpoints.down('sm')]: {
+			minHeight: 700,
+		},
 		'& > div.MuiGrid-item': {
 			marginBottom: 20,
 		},
-		[theme.breakpoints.down('xs')]: {
-			minHeight: 500,
-		}
 	},
 	card: {
 		marginBottom: 50,
@@ -40,10 +43,16 @@ const useStyle = makeStyles(theme => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
+		[theme.breakpoints.down('sm')]: {
+			minHeight: 600,
+		},
+		[theme.breakpoints.down('xs')]: {
+			minHeight: 500,
+		}
 	},
 	list: {
 		flexDirection: 'column',
-		minHeight: 900,
+		minHeight: 800,
 	},
 	cardsContainer: {
 		'&::after': {
@@ -53,6 +62,9 @@ const useStyle = makeStyles(theme => ({
 	},
 	messageLogo: {
 		height: 400,
+		[theme.breakpoints.down('md')]: {
+			height: 350,
+		},
 		[theme.breakpoints.down('xs')]: {
 			height: 250,
 		}
@@ -61,8 +73,14 @@ const useStyle = makeStyles(theme => ({
 		fontSize: '2rem',
 		textAlign: 'center',
 		margin: 0,
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.8rem',
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.5rem',
+		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '1.5rem'
+			fontSize: '1.1rem'
 		}
 	},
 	divider: {
@@ -98,10 +116,8 @@ const BlogList = (props) => {
 		return <Grid item xs={12} sm={6} md={4} key={index} className={classes.card} container justify="center">
 			<SimpleCard 
 				title={item.title}
-				author={item.author}
 				excerpt={item.excerpt}
 				id={item.id}
-				datePosted={item.datePosted}
 				comments={item.comments}
 				likes={item.likes}
 				viewBlog={viewBlog.bind(this, item.id)}

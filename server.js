@@ -53,8 +53,12 @@ const sendmail = async (contact, content) => {
     port: 587,
     secure: false,
     auth: {
+      type: "OAuth2",
       user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
+      clientId: process.env.GMAIL_CLIENT_ID,
+      refreshToken: process.env.GMAIL_REFRESH_TOKEN,
+      accessToken: process.env.GMAIL_ACCESS_TOKEN,
+      clientSecret: process.env.GMAIL_CLIENT_SECRET
     }
   });
 
