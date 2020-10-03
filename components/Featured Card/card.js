@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 //Utils
 import Link from 'next/link';
 import React from 'react';
+import Router from 'next/router';
 
 import storageRef from '../../utils/firebase';
 
@@ -122,6 +123,7 @@ const Card = (props) => {
 	const classes = useStyle();
 	const [loading, setLoading] = React.useState(false);
 	const element = React.useRef(null);
+	const viewFeatured = () => Router.push(`/works?id=${props.id}`);
 	React.useEffect(() => {
 		setLoading(true);
 		storageRef.child(`works/${props.id}.jpg`).getDownloadURL().then(url => {
@@ -130,7 +132,7 @@ const Card = (props) => {
 		});
 	}, []);
 	const style = (props.pos==='behind2') ?classes.cardBehind2 :props.pos==='behind' ?classes.cardBehind :classes.mainCard;
-	return <div className={[classes.card, style].join(' ')} onClick={props.switchMe}> 
+	return <div className={[classes.card, style].join(' ')} onClick={viewFeatured}> 
 		{loading ?<CircularProgress /> :<img src={""} id={`featuredid-${props.id}`} className={classes.img} ref={element} />}
 		<div className={classes.details}>
 			<div className={classes.detailsBg} />
