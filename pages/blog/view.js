@@ -12,6 +12,8 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 import Router from 'next/router';
 
+import styles from '../../src/styles/css/blog.module.css';
+
 //Custom component
 import BlogContainer from '../../components/Blog/blogcontainer';
 import CommentList from '../../components/View Blog/Comments/commentlist';
@@ -114,23 +116,11 @@ const useStyle = makeStyles(theme => ({
 	},
 	content: {
 		marginTop: 10,
-		textAlign: 'justify',
-		fontSize: '1.3rem',
-		width: '100%',
-		lineHeight: '2',
+		width: '90%',
 		whiteSpace: 'pre-wrap',
 		minHeight: 400,
 		[theme.breakpoints.down('md')]: {
-			fontSize: '1.15rem',
-			lineHeight: '1.7'
-		},
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '1rem',
-			lineHeight: '1.4',
-		},
-		[theme.breakpoints.down('xs')]: {
-			fontSize: '0.97rem',
-			lineHeight: '1.5'
+			width: '100%'
 		}
 	},
 	toMore: {
@@ -165,21 +155,46 @@ const BlogPage = (props) => {
 	const [isFavorite, setFavorite] = React.useState(currentBlog.liked);
 	const content = React.useRef(null);
 
+	//Append the content to the container
 	React.useEffect(() => {
 		content.current.innerHTML = currentBlog.content;
 		setFavorite(currentBlog.liked);
 	}, [currentBlog.id]);
 
+	//Add appropriate styling to the blog content
 	React.useEffect(() => {
+		//If it is a media container, but a div, add YT container style
 		document.querySelectorAll('.media-container>div').forEach(item => {
 			item.style = ""; item.firstChild.height = "";
 			item.classList.add(classes.ytContainer);
 		});
+		//Give the appropriate img src
 		document.querySelectorAll('.media-container>img').forEach((item, index) => {
 			storageRef.child(`/blogs/${currentBlog.id}/${currentBlog.id}[${index}].jpg`).getDownloadURL().then(url => {
 				item.src = url;
 			});
-		}); 
+		});
+		//Style html tags 
+		content.current.querySelectorAll('h1').forEach(item => item.classList.add(styles.mainTitle));
+		content.current.querySelectorAll('h2').forEach(item => item.classList.add(styles.sectionTitle));
+		content.current.querySelectorAll('h3').forEach(item => item.classList.add(styles.subsectionTitle));
+		content.current.querySelectorAll('div').forEach(item => item.classList.add(styles.content));
+		content.current.querySelectorAll('p').forEach(item => {
+			item.style = "";
+			item.classList.add(styles.content)
+		});
+		content.current.querySelectorAll('span').forEach(item => {
+			item.style = "";
+			item.classList.add(styles.content)
+		});
+		content.current.childNodes.forEach(a => {
+			if (a.nodeName==='#text') {
+				const p = document.createElement('p');
+				p.append(document.createTextNode(a.textContent));
+				p.className=styles.content;
+				content.current.replaceChild(p, a);
+			}
+		});
 	}, [currentBlog.id]);
 
 	const handleLike = async () => {

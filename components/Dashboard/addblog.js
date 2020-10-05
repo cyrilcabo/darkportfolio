@@ -3,10 +3,16 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 
 //Utils
 import React from 'react';
 import {apiAddBlog} from '../../utils/api';
+
+import styles from '../../src/styles/css/blog.module.css';
 
 //Styles
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -34,8 +40,6 @@ const useStyle = makeStyles(theme => ({
 	},
 }));
 
-
-
 const AddBlog = (props) => {
 	const classes = useStyle();
 	//Component's state
@@ -47,6 +51,8 @@ const AddBlog = (props) => {
 	const [embedURL, setEmbedURL] = React.useState("");
 	const [loading, setLoading] = React.useState(false);
 	const [message, setMessage] = React.useState({err: false, msg: ''});
+	const [addingTitle, setAddingTitle] = React.useState(false);
+	const [heading, setHeading] = React.useState({title: "", type: "h2"});
 	const contentRef = React.useRef(null);
 
 	//Event handlers
@@ -57,6 +63,21 @@ const AddBlog = (props) => {
 		e.target.addEventListener("keyup", handleContent);
 	}
 	const handleContent = (e) => setContent(e.target.innerHTML);
+
+	const update = (type) => {
+		//Update content
+		setContent(contentRef.current.innerHTML);
+
+		//update cursor pointer to the last of the element
+		contentRef.current.focus(); 
+	    const range = document.createRange();
+	    const sel = window.getSelection();
+	    range.setStart(contentRef.current.childNodes[contentRef.current.childNodes.length-1], type);
+	    range.collapse(true);
+	    sel.removeAllRanges();
+	    sel.addRange(range);
+	}
+
 	const addElement = (element) => {
 		//create elements
 		const lineBreak = document.createElement("br");
@@ -81,18 +102,9 @@ const AddBlog = (props) => {
 		contentRef.current.appendChild(container); 
 		contentRef.current.appendChild(lineBreak);
 
-		//Update content
-		setContent(contentRef.current.innerHTML);
-
-		//update cursor pointer to the last of the element
-		contentRef.current.focus(); 
-	    const range = document.createRange();
-	    const sel = window.getSelection();
-	    range.setStart(contentRef.current.childNodes[contentRef.current.childNodes.length-1], 0);
-	    range.collapse(true);
-	    sel.removeAllRanges();
-	    sel.addRange(range);
+		update(0);
 	}
+	//Image upload
 	const uploadImage = (e) => {
 	    const src = URL.createObjectURL(e.target.files[0]);
 	    const element = document.createElement("img");
@@ -105,6 +117,7 @@ const AddBlog = (props) => {
 	    //Clean input
 	    e.target.value = null;
 	}
+	//Add youtube embed
 	const addVideo = () => {
 		if (!embedURL) {
 			setEmbedding(false);
@@ -124,6 +137,33 @@ const AddBlog = (props) => {
 		setEmbedding(false);
 	}
 	const handleEmbedURL = (e) => setEmbedURL(e.target.value);
+
+	const handleAddingTitle = () => setAddingTitle(true);
+	const handleHeadingTitle = (e) => setHeading({...heading, title: e.target.value});
+	const handleHeadingType = (e) => setHeading({...heading, type: e.target.value});
+
+	const addTitle = () => {
+		if (!heading.title || !heading.type) {
+			setAddingTitle(false);
+			return;
+		}
+
+		const titleHeading = document.createElement(heading.type);
+		titleHeading.append(heading.title);
+		//Add heading styles
+		let cName = '';
+		if (heading.type==='h1') cName = styles.mainTitle;
+		else if (heading.type==='h2') cName = styles.sectionTitle;
+		else cName = styles.subsectionTitle;
+		titleHeading.className = cName;
+
+		contentRef.current.appendChild(titleHeading);
+		update(1);
+
+		setHeading({title: "", type: "h2"});
+		setAddingTitle(false);
+	}
+
 	const postBlog = async () => {
 		if (loading) return false;
 		setLoading(true);
@@ -132,7 +172,10 @@ const AddBlog = (props) => {
 		data.append("author", author);
 		data.append("content", content);
 		data.append("textcontent", contentRef.current.innerText);
-		pictures.forEach(item => data.append("pictures", item.file));
+		pictures.forEach(item => {
+			item.file.src = "";
+			data.append("pictures", item.file)
+		});
 		await apiAddBlog(data).then(res => {
 			setLoading(false);
 			setTitle("");
@@ -228,14 +271,52 @@ const AddBlog = (props) => {
 				</Grid>
 			</Grid>
 			<Grid item>
+				{addingTitle
+					?<Grid item container>
+						<Grid item xs={12}>
+							<TextField 
+								fullWidth
+								variant="outlined"
+								placeholder="Section title"
+								onChange={handleHeadingTitle}
+								value={heading.title}
+							/>
+						</Grid>
+						<Grid item xs={12} style={{margin: '10px 0px'}}>
+							<FormControl fullWidth>
+								<InputLabel> Type </InputLabel>
+								<Select onChange={handleHeadingType} value={heading.type}>
+									<MenuItem value={"h1"}> Main Title </MenuItem>
+									<MenuItem value={"h2"}> Section title </MenuItem>
+									<MenuItem value={"h3"}> Subsection title </MenuItem>
+								</Select>
+							</FormControl>
+						</Grid>
+						<Grid item xs={12}>
+							<Button 
+								fullWidth
+								color="primary"
+								variant="contained"
+								style={{height: '100%'}}
+								onClick={addTitle}
+							> Add </Button>
+						</Grid>
+					</Grid>
+					:<Button 
+						fullWidth 
+						variant="outlined"
+						onClick={handleAddingTitle}
+					> ADD SECTION TITLE </Button>
+				}
+			</Grid>
+			<Grid item>
 				<div 
-					className={classes.textField} 
+					className={[classes.textField, styles.content].join(' ')} 
 					contentEditable="true" 
 					suppressContentEditableWarning={true}
 					spellCheck="false" 
 					onClick={enableEdit}
 					ref={contentRef}
-
 				>
 				</div>
 			</Grid>

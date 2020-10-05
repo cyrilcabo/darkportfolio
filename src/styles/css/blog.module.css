@@ -1,0 +1,73 @@
+.mainTitle, .subsectionTitle, .sectionTitle {
+	font-family: sans-serif;
+	color: #191919;
+}
+
+.mainTitle {
+	font-size: 3rem;
+	margin: 18px 0px;
+}
+
+.sectionTitle {
+	font-size: 2.5rem;
+	margin: 20px 0px;
+}
+
+.subsectionTitle {
+	font-size: 1.5rem;
+	margin: 15px 0px 8px 0px;
+}
+
+.content {
+	text-align: justify;
+	font-size: 1.2rem;
+	line-height: 2;
+	margin: 0px;
+	font-family: sans-serif;
+}
+
+/*Breakpoint for MD devices*/
+@media screen and (max-width: 1280px) {
+	.mainTitle {
+		font-size: 2.5rem;
+		margin: 15px 0px;
+	}
+
+	.sectionTitle {
+		font-size: 2rem;
+		margin: 12px 0px;
+	}
+
+	.subsectionTitle {
+		font-size: 1.3rem;
+		margin: 10px 0px 6px 0px;
+	}
+
+	.content {
+		font-size: 1.15rem;
+		line-height: 1.7;
+	}
+}
+
+/*Breakpoint for SM devices*/
+@media screen and (max-width: 960px) {
+	.mainTitle {
+		font-size: 2rem;
+	}
+
+	.sectionTitle {
+		font-size: 1.7rem;
+	}
+
+	.subsectionTitle {
+		font-size: 1.2rem;
+	}
+
+	.content {
+		font-size: 1rem;
+	}
+}
+
+/*Breakpoint for XS devices*/
+@media screen and (max-width: 600px) {
+}
