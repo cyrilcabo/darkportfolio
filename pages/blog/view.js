@@ -45,8 +45,11 @@ const useStyle = makeStyles(theme => ({
 	titleContainer: {
 		backgroundColor: '#191919',
 		color: 'white',
-		padding: '15px 20px',
-		textAlign: 'center'
+		padding: '40px',
+		textAlign: 'center',
+		[theme.breakpoints.down('xs')]: {
+			padding: '50px 15px'
+		}
 	},
 	title: {
 		margin: '0px 0px 5px 0px',
@@ -114,7 +117,7 @@ const useStyle = makeStyles(theme => ({
 		height: '2.5px',
 		backgroundColor: '#f4d288'
 	},
-	conttentContainer: {
+	contentContainer: {
 		[theme.breakpoints.down('xs')]: {
 			backgroundColor: '#f9f9f9'
 		}
@@ -146,6 +149,12 @@ const useStyle = makeStyles(theme => ({
 		'& > path': {
 			fill: 'gray',
 		}
+	},
+	mediaContainer: {
+		display: 'flex',
+		justifyContent: 'center',
+		margin: '15px 0px',
+		width: '100%'
 	},
 	ytContainer: {
 		minWidth: '80%',
@@ -185,18 +194,12 @@ const BlogPage = (props) => {
 			});
 		});
 		//Style html tags 
+		[...content.current.children].forEach(item => item.style="");
 		content.current.querySelectorAll('h1').forEach(item => item.classList.add(styles.mainTitle));
 		content.current.querySelectorAll('h2').forEach(item => item.classList.add(styles.sectionTitle));
 		content.current.querySelectorAll('h3').forEach(item => item.classList.add(styles.subsectionTitle));
-		content.current.querySelectorAll('div').forEach(item => item.classList.add(styles.content));
-		content.current.querySelectorAll('p').forEach(item => {
-			item.style = "";
-			item.classList.add(styles.content)
-		});
-		content.current.querySelectorAll('span').forEach(item => {
-			item.style = "";
-			item.classList.add(styles.content)
-		});
+		content.current.querySelectorAll('div, p, span').forEach(item => item.classList.add(styles.content));
+		content.current.querySelectorAll('.media-container').forEach(item => item.classList.add(classes.mediaContainer));
 		content.current.childNodes.forEach(a => {
 			if (a.nodeName==='#text') {
 				const p = document.createElement('p');
@@ -232,7 +235,7 @@ const BlogPage = (props) => {
 						</Grid>
 					</Grid>
 					<Grid item className={classes.divider} xs={12} sm={11} md={10} />
-					<Grid item xs={12} container justify={"center"} className={classes.conttentContainer}>
+					<Grid item xs={12} container justify={"center"} className={classes.contentContainer}>
 						<Grid item xs={11} md={10} className={classes.content} ref={content} id="postcontent" />
 					</Grid>
 					<Grid item container justify='center' xs={11} md={10} >

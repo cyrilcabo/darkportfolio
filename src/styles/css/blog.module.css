@@ -70,4 +70,15 @@
 
 /*Breakpoint for XS devices*/
 @media screen and (max-width: 600px) {
+	.mainTitle {
+		font-size: 1.8rem;
+	}
+
+	.sectionTitle {
+		font-size: 1.5rem;
+	}
+
+	.content {
+		font-size: 0.98rem;
+	}
 }
