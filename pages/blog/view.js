@@ -39,8 +39,8 @@ const useStyle = makeStyles(theme => ({
 			minHeight: 800,
 		},
 		[theme.breakpoints.down('xs')]: {
-			minHeight: 750
-		}
+			minHeight: 750,
+		},
 	},
 	titleContainer: {
 		backgroundColor: '#191919',
@@ -114,13 +114,23 @@ const useStyle = makeStyles(theme => ({
 		height: '2.5px',
 		backgroundColor: '#f4d288'
 	},
+	conttentContainer: {
+		[theme.breakpoints.down('xs')]: {
+			backgroundColor: '#f9f9f9'
+		}
+	},
 	content: {
-		marginTop: 10,
-		width: '90%',
+		width: '100%',
 		whiteSpace: 'pre-wrap',
 		minHeight: 400,
+		padding: '10px 5%',
+		backgroundColor: '#f9f9f9',
 		[theme.breakpoints.down('md')]: {
-			width: '100%'
+			padding: '10px 2%'
+		},
+		[theme.breakpoints.down('xs')]: {
+			padding: '10px 0%',
+			backgroundColor: 'inherit',
 		}
 	},
 	toMore: {
@@ -207,8 +217,8 @@ const BlogPage = (props) => {
 	return (
 		<BlogContainer>
 			<Grid item xs={12} container justify="center" className={classes.root}>
-				<Grid item xs={11} md={10} direction="column" alignItems="center" container>
-					<Grid item container direction="column" alignItems="center" className={classes.titleContainer}>
+				<Grid item xs={12} justify="center" container>
+					<Grid item xs={12} sm={11} md={10} container direction="column" alignItems="center" className={classes.titleContainer}>
 						<Grid item>
 							<h3 className={classes.title}> {currentBlog.title} </h3>
 						</Grid>
@@ -221,9 +231,11 @@ const BlogPage = (props) => {
 							</Grid>
 						</Grid>
 					</Grid>
-					<Grid item className={classes.divider} />
-					<Grid item className={classes.content} ref={content} id="postcontent" />
-					<Grid item container justify='center'>
+					<Grid item className={classes.divider} xs={12} sm={11} md={10} />
+					<Grid item xs={12} container justify={"center"} className={classes.conttentContainer}>
+						<Grid item xs={11} md={10} className={classes.content} ref={content} id="postcontent" />
+					</Grid>
+					<Grid item container justify='center' xs={11} md={10} >
 						<Grid item>
 							<IconButton
 								onClick={handleLike}
@@ -232,12 +244,12 @@ const BlogPage = (props) => {
 							</IconButton>
 						</Grid>
 					</Grid>
-					<Grid item className={classes.divider} style={{backgroundColor: '#f2f2f2'}} />
+					<Grid item xs={11} md={10} className={classes.divider} style={{backgroundColor: '#f2f2f2'}} />
 					<MoreBlogList 
 						blogs={blogs} 
 						blogId={currentBlog.id} 
 					/>
-					<Grid item container direction="column" style={{width: '100%'}}>
+					<Grid item container direction="column" xs={11} md={10}>
 						<Grid item container>
 							<h3 style={{marginBottom: 5}}> Comments </h3>
 						</Grid>

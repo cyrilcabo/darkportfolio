@@ -45,7 +45,7 @@ const MoreBlogList = (props) => {
 	return (
 		<React.Fragment>
 			{moreBlog.length
-				?<Grid item container direction="column" alignItems="center">
+				?<Grid item xs={11} md={10} container direction="column" alignItems="center">
 					<Grid item>
 						<p className={classes.toMore}> Read more </p>
 					</Grid>

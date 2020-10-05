@@ -44,7 +44,7 @@ const AddBlog = (props) => {
 	const classes = useStyle();
 	//Component's state
 	const [title, setTitle] = React.useState("");
-	const [author, setAuthor] = React.useState("Co.Cabo");
+	const [author, setAuthor] = React.useState("co.cabo");
 	const [content, setContent] = React.useState("");
 	const [pictures, setPictures] = React.useState([]);
 	const [embedding, setEmbedding] = React.useState(false);
@@ -179,7 +179,6 @@ const AddBlog = (props) => {
 		await apiAddBlog(data).then(res => {
 			setLoading(false);
 			setTitle("");
-			setAuthor("");
 			setContent("");
 			setPictures([]);
 			contentRef.current.innerHTML = "";
