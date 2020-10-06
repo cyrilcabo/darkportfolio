@@ -14,7 +14,7 @@ const useStyle = makeStyles(theme => ({
 	root: {
 		minHeight: 380,
 		position: 'relative',
-		backgroundColor: '#f2f2f2',
+		backgroundColor: '#191919',
 		'& > div.MuiGrid-item': {
 			margin: '0px 10px 0px 10px',
 		},
@@ -74,7 +74,7 @@ const useStyle = makeStyles(theme => ({
 		margin: 0,
 		fontSize: '4rem',
 		fontFamily: 'fancy',
-		color: '#3e2a05',
+		color: '#ffffff',
 		[theme.breakpoints.down('md')]: {
 			fontFamily: '3.5rem',
 		},
@@ -91,6 +91,7 @@ const useStyle = makeStyles(theme => ({
 		fontSize: '1.5rem',
 		fontFamily: 'sans-serif',
 		fontWeight: 550,
+		color: '#f4d288',
 		[theme.breakpoints.down('md')]: {
 			fontSize: '1.35rem'
 		},
@@ -114,10 +115,10 @@ const useStyle = makeStyles(theme => ({
 	nav: {
 		margin: 0,
 		fontSize: '1.2rem',
-		color: '#b29968',
+		color: '#e9e9e9',
 		cursor: 'pointer',
 		'&:hover': {
-			color: 'black',
+			color: '#f4d288',
 		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.1rem',
