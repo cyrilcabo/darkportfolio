@@ -1,4 +1,6 @@
 import App from 'next/app';
+import {useRouter} from 'next/router';
+import React from 'react';
 
 import wrapper from '../redux/reducers/reducers';
 import {Provider} from 'react-redux';
@@ -10,6 +12,16 @@ import {apiAuthenticate} from '../utils/api';
 import '../src/styles/css/index.css';
 
 const DarkArts = ({Component, pageProps, custom}) => {
+	const router = useRouter();
+	React.useEffect(() => {
+		const handleRouteChange = (url) => {
+	      gtag.pageview(url)
+	    }
+	    router.events.on('routeChangeComplete', handleRouteChange)
+	    return () => {
+	      router.events.off('routeChangeComplete', handleRouteChange)
+	    }
+	}, [router.events])
 	return (
 		<ScrollToTop>
 			<Head>
