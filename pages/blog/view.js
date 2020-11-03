@@ -45,26 +45,29 @@ const useStyle = makeStyles(theme => ({
 	titleContainer: {
 		backgroundColor: '#191919',
 		color: 'white',
-		padding: '40px',
+		padding: '50px',
 		textAlign: 'center',
+		[theme.breakpoints.down('sm')]: {
+			padding: '40px 30px'
+		},
 		[theme.breakpoints.down('xs')]: {
-			padding: '50px 15px'
+			padding: '40px 15px'
 		}
 	},
 	title: {
 		margin: '0px 0px 5px 0px',
-		fontSize: '2.5rem',
-		fontFamily: 'fancy',
-		letterSpacing: '4px',
+		fontSize: '2.8rem',
+		fontFamily: 'Helvetica, Arial, sans-serif',
+		letterSpacing: '2px',
 		[theme.breakpoints.down('md')]: {
-			fontSize: '2rem',
+			fontSize: '2.2rem',
 		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.8rem',
 			letterSpacing: '2px',
 		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '1.5rem',
+			fontSize: '1.6rem',
 			letterSpacing: '1px'
 		}
 	},
@@ -218,7 +221,7 @@ const BlogPage = (props) => {
 	}
 
 	return (
-		<BlogContainer>
+		<BlogContainer isBlogPost>
 			<Grid item xs={12} container justify="center" className={classes.root}>
 				<Grid item xs={12} justify="center" container>
 					<Grid item xs={12} sm={11} md={10} container direction="column" alignItems="center" className={classes.titleContainer}>
