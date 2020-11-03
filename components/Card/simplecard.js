@@ -19,22 +19,34 @@ const useStyle = makeStyles(theme => ({
 		},
 		cursor: 'pointer',
 		display: 'flex',
-		border: '5px solid #313131',
-		width: 300,
-		[theme.breakpoints.down('md')]: {
-			width: 250,
-		},
+		boxShadow: '0px 0px 2px #313131',
+		backgroundColor: '#f7f7f7',
+		padding: 5,
+		width: '100%',
 		[theme.breakpoints.down('sm')]: {
-			width: 220,
+			width: 250,
 		},
 		[theme.breakpoints.down('xs')]: {
 			width: 250,
 		}
 	},
+	innerContainer: {
+		justifyContent: 'space-between',
+		[theme.breakpoints.down('sm')]: {
+			justifyContent: 'center',
+		}
+	},
 	imgContainer: {
+		maxHeight: 250,
+		maxWidth: 250,
+	},
+	placeholder: {
 		backgroundColor: 'black', 
-		height: 250, 
 		color: 'white',
+	},
+	img: {
+		height: 250,
+		width: 250, 
 		[theme.breakpoints.down('md')]: {
 			height: 200,
 		},
@@ -42,17 +54,20 @@ const useStyle = makeStyles(theme => ({
 			height: 150,
 		}
 	},
-	img: {
-		height: '100%', 
-		width: '100%'
-	},
-	placeholder: {
-		height: '100%', 
-		width: '100%',
-	},
 	contentContainer: {
-		padding: 5, 
+		padding: "20px 10px",
+		[theme.breakpoints.down('sm')]: {
+			padding: '10px 5px',
+		},
 		flex: 1
+	},
+	singleCard: {
+		[theme.breakpoints.down('md')]: {
+			width: '100%',
+			'& > div.MuiGrid-item': {
+				justifyContent: 'center'
+			}
+		}
 	}
 }));
 
@@ -67,11 +82,11 @@ const SimpleCard = (props) => {
 	return (
 		<Grid container item xs={12} md={11} justify="center">
 			<Paper className={classes.root} elevation={0} onClick={props.viewBlog}>
-				<Grid item container direction="column">
+				<Grid item container className={classes.innerContainer}>
 					<Grid item className={classes.imgContainer} container alignItems="center" justify="center">
 						{src
 							?<img className={classes.img} src={src} id={`img${props.id}`}/> 
-							:<Grid container justify="center" alignItems="center" className={classes.placeholder}> 
+							:<Grid container justify="center" alignItems="center" className={[classes.placeholder, classes.img].join(' ')}> 
 								<h2> Dark Arts </h2> 
 							</Grid>
 						}

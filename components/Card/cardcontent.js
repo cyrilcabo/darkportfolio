@@ -16,32 +16,32 @@ const useStyle = makeStyles(theme => ({
 	},
 	title: {
 		color: '#af5715',
-		fontSize: '1.8rem',
+		fontSize: '2rem',
 		fontFamily: 'fancy',
 		textAlign: 'center',
-		margin: "0px 0px 2px 0px",
+		margin: "0px 0px 10px 0px",
 		[theme.breakpoints.down('md')]: {
-			fontSize: '1.5rem',
+			fontSize: '1.7rem',
 		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.3rem',
 		}
 	},
 	trunc: {
-		fontSize: '0.9rem',
+		fontSize: '1.1rem',
 		fontFamily: 'sans-serif',
 		color: '#313131',
 		margin: 0,
 		overflowWrap: 'anywhere',
 		textAlign: 'center',
 		[theme.breakpoints.down('md')]: {
-			fontSize: '0.87rem',
+			fontSize: '1rem',
 		},
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '0.84rem'
+			fontSize: '0.95rem'
 		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '0.8rem'
+			fontSize: '0.9rem'
 		}
 	},
 	iconHolder: {
