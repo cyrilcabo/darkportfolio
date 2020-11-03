@@ -8,6 +8,7 @@ import Head from 'next/head';
 
 import ScrollToTop from '../utils/scrolltotop';
 import {apiAuthenticate} from '../utils/api';
+import * as gtag from '../utils/withGA';
 
 import '../src/styles/css/index.css';
 
