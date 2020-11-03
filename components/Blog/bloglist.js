@@ -21,7 +21,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 const useStyle = makeStyles(theme => ({
 	root: {
 		display: 'flex',
-		padding: '20px 0px 20px 0px',
+		padding: '40px 0px 20px 0px',
 		minHeight: 800,
 		[theme.breakpoints.down('md')]: {
 			minHeight: 750,
@@ -35,6 +35,8 @@ const useStyle = makeStyles(theme => ({
 	},
 	card: {
 		marginBottom: 50,
+		display: 'flex',
+		justifyContent: 'center',
 		[theme.breakpoints.down('sm')]: {
 			marginBottom: 30,
 		}
@@ -55,9 +57,16 @@ const useStyle = makeStyles(theme => ({
 		minHeight: 800,
 	},
 	cardsContainer: {
-		'&::after': {
-			content: "''",
-			flexGrow: 1,
+		flexDirection: 'column',
+		alignItems: 'center',
+		[theme.breakpoints.down('sm')]: {
+			flexDirection: 'row',
+			justifyContent: 'space-around',
+		},
+		[theme.breakpoints.down('xs')]: {
+			flexDirection: 'column',
+			justifyContent: 'unset',
+			alignItems: 'center',
 		},
 	},
 	messageLogo: {
@@ -113,7 +122,7 @@ const BlogList = (props) => {
 	}
 
 	const cards = blogs.map((item, index) => {
-		return <Grid item xs={12} sm={6} md={4} key={index} className={classes.card} container justify="center">
+		return <Grid item key={index} className={classes.card}>
 			<SimpleCard 
 				title={item.title}
 				excerpt={item.excerpt}
@@ -126,17 +135,10 @@ const BlogList = (props) => {
 	});
 
 	return (
-		<Grid item xs={11} className={[classes.root, blogs.length ?classes.list :classes.errorContainer].join(' ')}>
+		<Grid item xs={11} lg={8} className={[classes.root, blogs.length ?classes.list :classes.errorContainer].join(' ')}>
 			{blogs.length
-				?<React.Fragment>
-					<Grid item container alignItems="center">
-						<Grid item xs={3} sm={4} md={5} className={classes.divider} />
-						<Grid item xs={6} sm={4} md={2} container justify="center" style={{textAlign: 'center'}}>
-							<p style={{margin: 0, fontFamily: 'fancy'}}> Dark Arts </p>
-						</Grid>
-						<Grid item xs={3} sm={4}md={5}  className={classes.divider} />
-					</Grid>		
-					<Grid item container justify={"space-between"} className={classes.cardsContainer}>
+				?<React.Fragment>	
+					<Grid item container className={classes.cardsContainer}>
 						{cards}
 					</Grid>
 					<Grid item container style={{marginTop: 'auto', textAlign: 'center',}} justify="center" alignItems="center">

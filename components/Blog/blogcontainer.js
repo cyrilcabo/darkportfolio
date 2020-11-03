@@ -8,7 +8,7 @@ import Footer from '../Index/footer';
 const BlogContainer = (props) => {
 	return (
 		<Grid item container xs={12}>
-			<BlogHeader />
+			<BlogHeader isBlogPost={props.isBlogPost} />
 			<Grid item xs={12}>
 				<Grid item container justify="center">
 					{props.children}
