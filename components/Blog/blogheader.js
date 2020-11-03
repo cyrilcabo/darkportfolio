@@ -19,13 +19,31 @@ const useStyle = makeStyles(theme => ({
 			margin: '0px 10px 0px 10px',
 		},
 		[theme.breakpoints.down('md')]: {
-			minHeight: 340,
+			minHeight: 300,
 		},
 		[theme.breakpoints.down('sm')]: {
-			minHeight: 270,
+			minHeight: 250,
 		},
 		[theme.breakpoints.down('xs')]: {
-			minHeight: 280,
+			minHeight: 240,
+		}
+	},
+	rootBg: {
+		position: 'absolute',
+		zIndex: 0,
+		height: '100%',
+		width: '100%',
+		backgroundImage: 'url(/images/banner/banner.jpeg)',
+		backgroundRepeat: 'no-repeat',
+		backgroundSize: '100% 100%',
+		filter: 'brightness(50%)',
+		[theme.breakpoints.down('sm')]: {
+			backgroundImage: 'url(/images/banner/banner_sm.jpeg)',
+		},
+		[theme.breakpoints.down('xs')]: {
+			backgroundImage: 'url(/images/banner/banner_2_xs.jpeg)',
+			backgroundSize: 'cover',
+			filter: 'brightness(30%)'
 		}
 	},
 	coffeecup: {
@@ -47,18 +65,12 @@ const useStyle = makeStyles(theme => ({
 			marginTop: 30,
 		}
 	},
-	designContainer: {
-		[theme.breakpoints.down('xs')]: {
-			width: '100%',
-			flexBasis: '100%',
-			display: 'flex',
-			justifyContent: 'center'
-		}
+	innerContainer: {
+		zIndex: 1
 	},
 	titleholder: {
 		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'flex-start',
+		alignItems: 'flex-start',
 		flexDirection: 'column',
 		minHeight: 170,
 		textAlign: 'center',
@@ -68,18 +80,19 @@ const useStyle = makeStyles(theme => ({
 		[theme.breakpoints.down('xs')]: {
 			width: '100%',
 			flexBasis: '100%',
+			alignItems: 'center'
 		}
 	},
 	title: {
 		margin: 0,
-		fontSize: '4rem',
+		fontSize: '5rem',
 		fontFamily: 'fancy',
 		color: '#ffffff',
 		[theme.breakpoints.down('md')]: {
-			fontFamily: '3.5rem',
+			fontSize: '4rem',
 		},
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '2.5rem',
+			fontSize: '3rem',
 		},
 		[theme.breakpoints.down('xs')]: {
 			fontSize: '1.8rem',
@@ -88,12 +101,12 @@ const useStyle = makeStyles(theme => ({
 	},
 	subTitle: {
 		margin: 0,
-		fontSize: '1.5rem',
-		fontFamily: 'sans-serif',
+		fontSize: '1.8rem',
+		fontFamily: 'fancy',
 		fontWeight: 550,
 		color: '#f4d288',
 		[theme.breakpoints.down('md')]: {
-			fontSize: '1.35rem'
+			fontSize: '1.4rem'
 		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.2rem',
@@ -106,19 +119,26 @@ const useStyle = makeStyles(theme => ({
 		marginTop: 'auto',
 		width: '100%',
 		display: 'flex',
-		justifyContent: 'center',
+		marginTop: 20,
+		justifyContent: 'flex-start',
 		[theme.breakpoints.down('sm')]: {
 			marginTop: 25,
 			marginBottom: 15,
+		},
+		[theme.breakpoints.down('xs')]: {
+			justifyContent: 'center'
 		}
 	},
 	nav: {
 		margin: 0,
-		fontSize: '1.2rem',
+		fontSize: '1.4rem',
 		color: '#e9e9e9',
 		cursor: 'pointer',
 		'&:hover': {
 			color: '#f4d288',
+		},
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.2rem'
 		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '1.1rem',
@@ -140,24 +160,30 @@ const BannerHeader = (props) => {
 	});
 	return (
 		<Grid item xs={12} container justify="center" alignItems="center" className={classes.root}>
-			<div style={{position: 'absolute', zIndex: 1, height: 15, width: '100%', backgroundColor: 'black', top: 0}} />
-			<Grid item className={classes.designContainer}>
-				<Grid item container justify="center" alignItems="center" className={classes.coffeeholder}>
-					<CoffeeCup className={classes.coffeecup} preserveAspectRatio="none"/>
+			<div className={classes.rootBg} />
+			<Grid item xs={11} sm={10} lg={props.isBlogPost ?10 :8} container className={classes.innerContainer}>
+				<Grid item className={classes.titleholder}>
+					<Grid item>
+						<p className={classes.title}> 
+							{props.isBlogPost
+								?"All about art and life!"
+								:"Welcome to Blog Arts"
+							} 
+						</p>
+					</Grid>
+					<Grid item>
+						<p className={classes.subTitle}> 
+							{props.isBlogPost
+								?"Enjoy a good read"
+								:"Tutorials and more!"
+							} 
+						</p>
+					</Grid>
+					<Grid item className={classes.navContainer}>
+						{navs}
+					</Grid>
 				</Grid>
 			</Grid>
-			<Grid item className={classes.titleholder}>
-				<Grid item>
-					<p className={classes.title}> Welcome to Blog Arts </p>
-				</Grid>
-				<Grid item>
-					<p className={classes.subTitle}> Tutorials and more </p>
-				</Grid>
-				<Grid item className={classes.navContainer}>
-					{navs}
-				</Grid>
-			</Grid>
-
 		</Grid>
 	);
 }
