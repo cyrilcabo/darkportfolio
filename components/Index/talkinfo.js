@@ -92,6 +92,7 @@ const TalkInfo = (props) => {
 	const [contactInfo, setContactInfo] = React.useState("");
 	const [messageInfo, setMessageInfo] = React.useState(props.placeholder || "");
 	const [errorInfo, setErrorInfo] = React.useState({err: false, msg: ""});
+	const [loading, setLoading] = React.useState(false);
 	//Save user input
 	const handleContactInfo = (e) => setContactInfo(e.target.value);
 	const handleMessageInfo = (e) => setMessageInfo(e.target.value);
