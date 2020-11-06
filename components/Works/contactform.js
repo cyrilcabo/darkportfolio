@@ -15,13 +15,13 @@ const useStyle = makeStyles(theme => ({
 		paddingBottom: '30px',
 		backgroundColor: '#f9f9f9',
 		[theme.breakpoints.down('md')]: {
-			width: '55%',
+			width: '60%',
 		},
 		[theme.breakpoints.down('sm')]: {
-			width: '70%'
+			width: '75%'
 		},
 		[theme.breakpoints.down('xs')]: {
-			width: '85%',
+			width: '95%',
 			paddingTop: 15,
 		}
 	},
