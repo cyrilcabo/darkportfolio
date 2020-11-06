@@ -92,17 +92,6 @@ const TalkInfo = (props) => {
 	const [contactInfo, setContactInfo] = React.useState("");
 	const [messageInfo, setMessageInfo] = React.useState(props.placeholder || "");
 	const [errorInfo, setErrorInfo] = React.useState({err: false, msg: ""});
-	const [counter, setCounter] = React.useState(2);
-	const [loading, setLoading] = React.useState(false);
-	//Display helper message
-	const handleInfo = (type) => {
-		if (counter <= 0) return false;
-		if (type==="UNSET") setCounter(counter-1);
-		setErrorInfo({
-			err: false, 
-			msg: type==="SET" ?"How we can reach you back." :""
-		});
-	}
 	//Save user input
 	const handleContactInfo = (e) => setContactInfo(e.target.value);
 	const handleMessageInfo = (e) => setMessageInfo(e.target.value);
@@ -135,8 +124,7 @@ const TalkInfo = (props) => {
 							color="secondary" 
 							className={[classes.textBox, classes.textBoxContact].join(' ')}
 							onChange={handleContactInfo}
-							onFocus={handleInfo.bind(this, "SET")}
-							onBlur={handleInfo.bind(this, "UNSET")}
+							helperText={"How we can reach you back"}
 							value={contactInfo}
 							placeholder={'Email / Phone number'}
 						/>
