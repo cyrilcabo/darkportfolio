@@ -28,6 +28,18 @@ const useStyle = makeStyles(theme => ({
 			minHeight: 240,
 		}
 	},
+	blogRoot: {
+		minHeight: 200,
+		[theme.breakpoints.down('md')]: {
+			minHeight: 190,
+		},
+		[theme.breakpoints.down('sm')]: {
+			minHeight: 180,
+		},
+		[theme.breakpoints.down('xs')]: {
+			minHeight: 150
+		}
+	},
 	rootBg: {
 		position: 'absolute',
 		zIndex: 0,
@@ -45,6 +57,10 @@ const useStyle = makeStyles(theme => ({
 			backgroundSize: 'cover',
 			filter: 'brightness(30%)'
 		}
+	},
+	blogBg: {
+		backgroundSize: 'cover',
+		backgroundPosition: 'center',
 	},
 	coffeecup: {
 		height: '70%',
@@ -80,8 +96,12 @@ const useStyle = makeStyles(theme => ({
 		[theme.breakpoints.down('xs')]: {
 			width: '100%',
 			flexBasis: '100%',
-			alignItems: 'center'
+			alignItems: 'center',
+			textAlign: 'center'
 		}
+	},
+	titleBlog: {
+		justifyContent: 'center',
 	},
 	title: {
 		margin: 0,
@@ -115,6 +135,11 @@ const useStyle = makeStyles(theme => ({
 			fontSize: '1rem',
 		}
 	},
+	blogSubTitle: {
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.2rem'
+		}
+	},
 	navContainer: {
 		marginTop: 'auto',
 		width: '100%',
@@ -127,6 +152,11 @@ const useStyle = makeStyles(theme => ({
 		},
 		[theme.breakpoints.down('xs')]: {
 			justifyContent: 'center'
+		}
+	},
+	blogNavContainer: {
+		[theme.breakpoints.down('sm')]: {
+			margin: '10px 0px',
 		}
 	},
 	nav: {
@@ -146,6 +176,18 @@ const useStyle = makeStyles(theme => ({
 		[theme.breakpoints.down('xs')]: {
 			fontSize: '1rem',
 		}
+	},
+	blogNav: {
+		fontSize: '1.2rem',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '1.15rem'
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '1.1rem',
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '0.95rem'
+		}
 	}
 }));
 
@@ -154,32 +196,32 @@ const BannerHeader = (props) => {
 	const navs = [{name: 'Home', link: '/'}, {name: 'Works', link: '/works'}, {name: 'Blog', link: '/blog'}].map((item, index) => {
 		return <Grid item key={index} style={{margin: '0px 10px 0px 10px'}}>
 			<Link href={item.link}>
-				<p className={classes.nav}> {item.name} </p>
+				<p className={[props.isBlogPost ?classes.blogNav :'', classes.nav].join(' ')}> {item.name} </p>
 			</Link>
 		</Grid>;
 	});
 	return (
-		<Grid item xs={12} container justify="center" alignItems="center" className={classes.root}>
-			<div className={classes.rootBg} />
-			<Grid item xs={11} sm={10} lg={props.isBlogPost ?10 :8} container className={classes.innerContainer}>
-				<Grid item className={classes.titleholder}>
+		<Grid item xs={12} container justify="center" alignItems="center" className={[props.isBlogPost ?classes.blogRoot :'', classes.root].join(' ')}>
+			<div className={[props.isBlogPost ?classes.blogBg :'', classes.rootBg].join(' ')} />
+			<Grid item xs={11} sm={10} lg={8} container className={classes.innerContainer}>
+				<Grid item className={[props.isBlogPost ?classes.titleBlog: "", classes.titleholder].join(' ')}>
+					{props.isBlogPost	
+						?""
+						:<Grid item>
+							<p className={classes.title}> 
+								Welcome to Blog Arts
+							</p>
+						</Grid>
+					}
 					<Grid item>
-						<p className={classes.title}> 
+						<p className={[props.isBlogPost ?classes.blogSubTitle :'', classes.subTitle].join(' ')}> 
 							{props.isBlogPost
-								?"All about art and life!"
-								:"Welcome to Blog Arts"
-							} 
-						</p>
-					</Grid>
-					<Grid item>
-						<p className={classes.subTitle}> 
-							{props.isBlogPost
-								?"Enjoy a good read"
+								?props.title.length >= 40 ?`${props.title.slice(0, 37)}...` :props.title
 								:"Tutorials and more!"
 							} 
 						</p>
 					</Grid>
-					<Grid item className={classes.navContainer}>
+					<Grid item className={[props.isBlogPost ?classes.blogNavContainer :'',classes.navContainer].join(' ')}>
 						{navs}
 					</Grid>
 				</Grid>

@@ -43,31 +43,34 @@ const useStyle = makeStyles(theme => ({
 		},
 	},
 	titleContainer: {
-		backgroundColor: '#191919',
-		color: 'white',
+		color: 'black',
 		padding: '50px',
-		textAlign: 'center',
+		textAlign: 'left',
+		wordBreak: 'break-word',
+		[theme.breakpoints.down('md')]: {
+			padding: '50px 40px'
+		},
 		[theme.breakpoints.down('sm')]: {
-			padding: '40px 30px'
+			padding: '35px 25px'
 		},
 		[theme.breakpoints.down('xs')]: {
-			padding: '40px 15px'
+			padding: '20px 0px'
 		}
 	},
 	title: {
 		margin: '0px 0px 5px 0px',
-		fontSize: '2.8rem',
+		fontSize: '4rem',
 		fontFamily: 'Helvetica, Arial, sans-serif',
 		letterSpacing: '2px',
 		[theme.breakpoints.down('md')]: {
-			fontSize: '2.2rem',
+			fontSize: '3rem',
 		},
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1.8rem',
+			fontSize: '2.5rem',
 			letterSpacing: '2px',
 		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '1.6rem',
+			fontSize: '2rem',
 			letterSpacing: '1px'
 		}
 	},
@@ -117,26 +120,21 @@ const useStyle = makeStyles(theme => ({
 	},
 	divider: {
 		width: '100%',
-		height: '2.5px',
-		backgroundColor: '#f4d288'
-	},
-	contentContainer: {
-		[theme.breakpoints.down('xs')]: {
-			backgroundColor: '#f9f9f9'
-		}
+		height: '2px',
 	},
 	content: {
 		width: '100%',
 		whiteSpace: 'pre-wrap',
 		minHeight: 400,
-		padding: '10px 5%',
-		backgroundColor: '#f9f9f9',
+		padding: '10px 50px',
 		[theme.breakpoints.down('md')]: {
-			padding: '10px 2%'
+			padding: '10px 40px'
+		},
+		[theme.breakpoints.down('sm')]: {
+			padding: '10px 25px',
 		},
 		[theme.breakpoints.down('xs')]: {
-			padding: '10px 0%',
-			backgroundColor: 'inherit',
+			padding: '10px 0px',
 		}
 	},
 	toMore: {
@@ -221,10 +219,10 @@ const BlogPage = (props) => {
 	}
 
 	return (
-		<BlogContainer isBlogPost>
+		<BlogContainer isBlogPost title={currentBlog.title}>
 			<Grid item xs={12} container justify="center" className={classes.root}>
-				<Grid item xs={12} justify="center" container>
-					<Grid item xs={12} sm={11} md={10} container direction="column" alignItems="center" className={classes.titleContainer}>
+				<Grid item xs={11} md={10} lg={8} justify="center" container>
+					<Grid item container direction="column" className={classes.titleContainer}>
 						<Grid item>
 							<h3 className={classes.title}> {currentBlog.title} </h3>
 						</Grid>
@@ -237,11 +235,11 @@ const BlogPage = (props) => {
 							</Grid>
 						</Grid>
 					</Grid>
-					<Grid item className={classes.divider} xs={12} sm={11} md={10} />
-					<Grid item xs={12} container justify={"center"} className={classes.contentContainer}>
-						<Grid item xs={11} md={10} className={classes.content} ref={content} id="postcontent" />
+					<Grid item xs={12} className={classes.divider} style={{backgroundColor: '#f2f2f2'}} />
+					<Grid item container justify={"center"} className={classes.contentContainer}>
+						<Grid item className={classes.content} ref={content} id="postcontent" />
 					</Grid>
-					<Grid item container justify='center' xs={11} md={10} >
+					<Grid item container justify='center' >
 						<Grid item>
 							<IconButton
 								onClick={handleLike}
@@ -250,12 +248,12 @@ const BlogPage = (props) => {
 							</IconButton>
 						</Grid>
 					</Grid>
-					<Grid item xs={11} md={10} className={classes.divider} style={{backgroundColor: '#f2f2f2'}} />
+					<Grid item xs={12} className={classes.divider} style={{backgroundColor: '#f2f2f2'}} />
 					<MoreBlogList 
 						blogs={blogs} 
 						blogId={currentBlog.id} 
 					/>
-					<Grid item container direction="column" xs={11} md={10}>
+					<Grid item container direction="column">
 						<Grid item container>
 							<h3 style={{marginBottom: 5}}> Comments </h3>
 						</Grid>
