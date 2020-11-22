@@ -154,7 +154,7 @@ const useStyle = makeStyles(theme => ({
 	mediaContainer: {
 		display: 'flex',
 		justifyContent: 'center',
-		margin: '15px 0px',
+		margin: '20px 0px',
 		width: '100%'
 	},
 	ytContainer: {
