@@ -25,7 +25,7 @@ const useStyle = makeStyles(theme => ({
 			minHeight: 250,
 		},
 		[theme.breakpoints.down('xs')]: {
-			minHeight: 240,
+			minHeight: 200,
 		}
 	},
 	blogRoot: {
@@ -105,11 +105,11 @@ const useStyle = makeStyles(theme => ({
 	},
 	title: {
 		margin: 0,
-		fontSize: '5rem',
+		fontSize: '4rem',
 		fontFamily: 'fancy',
 		color: '#ffffff',
 		[theme.breakpoints.down('md')]: {
-			fontSize: '4rem',
+			fontSize: '3.5rem',
 		},
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '3rem',
