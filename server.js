@@ -73,6 +73,20 @@ const sendmail = async (contact, content) => {
 }
 
 //--------------------------------------------
+// Since app is running on heroku, this is used to force redirect from http to https
+// Credits here: https://jaketrent.com/post/https-redirect-node-heroku
+
+if(process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+      res.redirect(`https://${req.header('host')}${req.url}`);
+    } else {
+      next();
+    }
+  });
+}
+
+//--------------------------------------------
 //EXPRESS CONFIGURATION
 
 app.set('PORT', process.env.PORT || 3000);
