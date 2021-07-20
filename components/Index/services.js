@@ -102,29 +102,29 @@ const useStyle = makeStyles(theme => ({
 		}
 	},
 	serviceTitle: {
-		fontWeight: 500,
+		fontWeight: 550,
 		fontFamily: 'sans-serif',
 		margin: 0,
-		fontSize: '1.4rem',
+		fontSize: '1.5rem',
 		[theme.breakpoints.down('md')]: {
-			fontSize: '1.2rem',
+			fontSize: '1.3rem',
 		},
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '1rem'
+			fontSize: '1.2rem'
 		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '0.95rem'
+			fontSize: '1rem'
 		}
 	},
 	serviceDetails: {
 		margin: 0,
-		fontSize: '0.85rem',
+		fontSize: '1.3rem',
 		textAlign: 'center',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '0.8rem'
+			fontSize: '1rem'
 		},
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '0.7rem',
+			fontSize: '0.95rem',
 			marginBottom: 30,
 		}
 	}
@@ -138,7 +138,7 @@ const Services = () => {
 		{name: "Portrait", icon: <BrushIcon width={"100%"} height={"100%"} viewBox="0 0 62 65" />, details: "Uncanny resemblance!"}
 	];
 	const mappedServices = services.map((item, index) => {
-		return <Grid item xs={3} className={classes.service} container direction={"column"} alignItems={"center"} key={index}>
+		return <Grid item xs={5} sm={3} className={classes.service} container direction={"column"} alignItems={"center"} key={index}>
 			<Grid item className={classes.serviceIcon}>
 				{item.icon}
 			</Grid>
